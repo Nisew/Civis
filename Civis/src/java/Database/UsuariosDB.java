@@ -12,6 +12,7 @@ public class UsuariosDB {
  
     Connection con;
     
+    //Metodo para registrarse
     public boolean crearUsuario(Usuario u) throws SQLException {
     
         boolean existe = false;
@@ -44,6 +45,7 @@ public class UsuariosDB {
         return existe;
     }
     
+    //Metodo para iniciar sesion
     public boolean iniciarSesion(Usuario u) throws SQLException {
         
         boolean logueado = false;
@@ -71,6 +73,7 @@ public class UsuariosDB {
         return logueado;
     }
     
+    //Metodo para listar todos los eventos por nombre de usuario
     public ArrayList<Evento> listarEventos(Usuario u) throws SQLException {
         
         ArrayList<Evento> eventos = new ArrayList<>();
@@ -100,6 +103,7 @@ public class UsuariosDB {
         return eventos;
     }  
     
+    //Metodo para inscribirse en un evento
     public void inscribirEvento(Evento e,Usuario u) throws SQLException {
     
         String sql = "insert into ayudantes(id_usuario,id_evento) values(?,?)";
@@ -110,14 +114,17 @@ public class UsuariosDB {
         ps.executeQuery();
     }
     
+    //Metodo para ver el estado de la inscripcion a un evento
     public ArrayList<Evento> verEstadoInscripcion(Usuario u) throws SQLException {
     
         ArrayList<Evento> eventos = new ArrayList<>();
+        //HACE FALTA HACER UN JOIN 
+        //ID AYUDANTE = ID EVENTO
         String sql = "select * from ayudantes where id_usuario = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, u.getId_usuario());
-        ResultSet rs = ps.executeQuery();
         
+        ResultSet rs = ps.executeQuery();
         
          while (rs.next()) {            
             eventos.add(new Evento(
@@ -135,14 +142,28 @@ public class UsuariosDB {
                     rs.getBoolean("confirmado"),
                     rs.getInt("id_creador")));
         }
-        return eventos;
-        
-        
+        return eventos;        
     }
     
-    
-    
-    
-    
-    
+    //Metodo para mostrar perfil de un usuario
+    public void verUsuario(Usuario u) throws SQLException {
+        
+        String sql = "SELECT * FROM usuarios WHERE id_usuario = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, u.getId_usuario());
+        
+        ResultSet rs = ps.executeQuery();
+        
+        while(rs.next()) {
+            rs.getInt("id_usuario");
+            rs.getString("usuario");
+            rs.getString("contrasenya");
+            rs.getString("nombre");
+            rs.getString("apellidos");
+            rs.getDate("fecha_nacimiento");
+            rs.getInt("telefono");
+            rs.getString("correo");
+        }        
+    }
+     
 }
