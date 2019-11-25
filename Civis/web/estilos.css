@@ -1,6 +1,7 @@
 .principal {
-    background-color: cadetblue;
     margin-top: 100px;
+    margin-left: 160px;
+    margin-right: 160px;
 }
 
 .feed {
@@ -12,5 +13,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
     
 }
