@@ -2,7 +2,7 @@ package Entities;
 
 import java.sql.Date;
 
-public class Usuarios {
+public class Usuario {
  
     String usuario;
     String passwd;
@@ -12,7 +12,7 @@ public class Usuarios {
     int telefono;
     String correo;
 
-    public Usuarios(String usuario, String passwd, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
+    public Usuario (String usuario, String passwd, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
         this.usuario = usuario;
         this.passwd = passwd;
         this.nombre = nombre;

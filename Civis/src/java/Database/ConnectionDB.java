@@ -6,14 +6,14 @@ import java.sql.SQLException;
 
 public class ConnectionDB {
     
-    Connection con;
+    Connection conn;
     
     public void openConnection() throws SQLException, ClassNotFoundException{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/voluntariobd?serverTimezone=UTC&useSSL=false", "root", "root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/voluntariobd?serverTimezone=UTC&useSSL=false", "root", "root");
     }
 
     public void closeConnection() throws SQLException{
-            con.close();
+            conn.close();
     }
 }
