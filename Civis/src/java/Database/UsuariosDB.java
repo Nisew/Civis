@@ -30,7 +30,7 @@ public class UsuariosDB {
         
         if (!existe) {
             ps1.setString(1, u.getUsuario());
-            ps1.setString(2, u.getPasswd());
+            ps1.setString(2, u.getContrasenya());
             ps1.setString(3, u.getNombre());
             ps1.setString(4, u.getApellidos());
             ps1.setDate(5, u.getFechaNacimiento());
