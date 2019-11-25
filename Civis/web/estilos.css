@@ -1,0 +1,16 @@
+.principal {
+    background-color: cadetblue;
+    margin-top: 100px;
+}
+
+.feed {
+    width: 500px;
+    
+}
+
+.botonmain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
