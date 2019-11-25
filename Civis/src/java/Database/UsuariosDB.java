@@ -1,6 +1,6 @@
 package Database;
 
-import Entities.Usuarios;
+import Entities.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ public class UsuariosDB {
  
     Connection con;
     
-    public boolean addUsuario(Usuarios u) throws SQLException {
+    public boolean addUsuario(Usuario u) throws SQLException {
     
         boolean existe = false;
         
