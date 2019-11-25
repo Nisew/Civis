@@ -4,22 +4,32 @@ import java.sql.Date;
 
 public class Usuario {
  
+    int id_usuario;
     String usuario;
-    String passwd;
+    String contrasenya;
     String nombre;
     String apellidos;
     Date fechaNacimiento;
     int telefono;
     String correo;
 
-    public Usuario (String usuario, String passwd, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
+    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
+        this.id_usuario = id_usuario;
         this.usuario = usuario;
-        this.passwd = passwd;
+        this.contrasenya = contrasenya;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.correo = correo;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getUsuario() {
@@ -30,12 +40,12 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getPasswd() {
-        return passwd;
+    public String getContrasenya() {
+        return contrasenya;
     }
 
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
+    public void setContrasenya(String contrasenya) {
+        this.contrasenya = contrasenya;
     }
 
     public String getNombre() {
@@ -80,7 +90,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuarios{" + "usuario=" + usuario + ", passwd=" + passwd + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", correo=" + correo + '}';
+        return "Usuario{" + "id_usuario=" + id_usuario + ", usuario=" + usuario + ", contrasenya=" + contrasenya + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", correo=" + correo + '}';
     }
-    
+
 }
