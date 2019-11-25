@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Usuario {
  
+    int id_usuario;
     String usuario;
     String contrasenya;
     String nombre;
@@ -12,7 +13,8 @@ public class Usuario {
     int telefono;
     String correo;
 
-    public Usuario (String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
+    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
+        this.id_usuario = id_usuario;
         this.usuario = usuario;
         this.contrasenya = contrasenya;
         this.nombre = nombre;
@@ -20,6 +22,14 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.correo = correo;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getUsuario() {
@@ -80,7 +90,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuarios{" + "usuario=" + usuario + ", contrasenya=" + contrasenya + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", correo=" + correo + '}';
+        return "Usuario{" + "id_usuario=" + id_usuario + ", usuario=" + usuario + ", contrasenya=" + contrasenya + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", correo=" + correo + '}';
     }
-    
+
 }

@@ -17,12 +17,12 @@ public class Evento {
     private boolean inscrito;
     private boolean aceptado;
     private boolean confirmado;
-    private int id_necesitado;
+    private int id_creador;
 
     public Evento () {    
     }
     
-    public Evento (int id_evento, String titulo, String ubicacion, Time hora_registro, Date fecha_registro, Time hora_evento, Date fecha_evento, String descripcion, int num_ayudante, boolean inscrito, boolean aceptado, boolean confirmado, int id_necesitado) {
+    public Evento (int id_evento, String titulo, String ubicacion, Time hora_registro, Date fecha_registro, Time hora_evento, Date fecha_evento, String descripcion, int num_ayudante, boolean inscrito, boolean aceptado, boolean confirmado, int id_creador) {
         this.id_evento = id_evento;
         this.titulo = titulo;
         this.ubicacion = ubicacion;
@@ -35,7 +35,7 @@ public class Evento {
         this.inscrito = inscrito;
         this.aceptado = aceptado;
         this.confirmado = confirmado;
-        this.id_necesitado = id_necesitado;
+        this.id_creador = id_creador;
     }
 
     public int getId_evento() {
@@ -126,12 +126,17 @@ public class Evento {
         this.confirmado = confirmado;
     }
 
-    public int getId_necesitado() {
-        return id_necesitado;
+    public int getId_creador() {
+        return id_creador;
     }
 
-    public void setId_necesitado(int id_necesitado) {
-        this.id_necesitado = id_necesitado;
+    public void setId_creador(int id_creador) {
+        this.id_creador = id_creador;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento{" + "id_evento=" + id_evento + ", titulo=" + titulo + ", ubicacion=" + ubicacion + ", hora_registro=" + hora_registro + ", fecha_registro=" + fecha_registro + ", hora_evento=" + hora_evento + ", fecha_evento=" + fecha_evento + ", descripcion=" + descripcion + ", num_ayudante=" + num_ayudante + ", inscrito=" + inscrito + ", aceptado=" + aceptado + ", confirmado=" + confirmado + ", id_creador=" + id_creador + '}';
     }
   
 }
