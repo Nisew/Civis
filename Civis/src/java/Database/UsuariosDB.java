@@ -42,5 +42,16 @@ public class UsuariosDB {
         return existe;
     }
     
-    public void startSession() {}
+    public void startSession(String usuario, String contrasenya) throws SQLException {
+        
+        String sql = "SELECT usuario, contrasenya FROM usuarios";
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ResultSet rs = ps.executeQuery();
+        
+        if (usuario.equals(rs.getString("usuario")) && contrasenya.equals(rs.getString("contrasenya"))) {
+            
+        }
+        
+    }
 }
