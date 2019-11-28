@@ -138,7 +138,7 @@ public class Evento {
     
     public static String fechaActual(){
        
-    DateFormat horaFormato = new SimpleDateFormat("yyyy-mm-dd");
+    DateFormat horaFormato = new SimpleDateFormat("YYYY-MM-dd");
     String fechaActual = horaFormato.format(new Date());
     
         

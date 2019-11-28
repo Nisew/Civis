@@ -3,9 +3,11 @@ package Database;
 import Entities.Evento;
 import Entities.Usuario;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class UsuariosDB {
@@ -16,6 +18,7 @@ public class UsuariosDB {
     public boolean crearUsuario(Usuario u) throws SQLException {
     
         boolean existe = false;
+        con = ConnectionDB.conexion();
         
         String sqlInsert = "INSERT INTO usuarios (usuario, contrasenya, nombre, apellidos, fecha_nacimiento, telefono, correo) VALUES (?,?,?,?,?,?,?)";
         PreparedStatement ps1 = con.prepareStatement(sqlInsert);
@@ -58,7 +61,7 @@ public class UsuariosDB {
         
         if (rs.next()) {
             if (u.getContrasenya().equals(rs.getString("contrasenya"))) {
-                u.setId_usuario(rs.getInt("id_usuario"));
+                
                 u.setUsuario(rs.getString("usuario"));
                 u.setContrasenya(rs.getString("contrasenya"));
                 u.setNombre(rs.getString("nombre"));
@@ -165,5 +168,25 @@ public class UsuariosDB {
             rs.getString("correo");
         }        
     }
+   // El main es un ejemplo de como ejecutar. 
+    /*
+    public static void main(String[] args) {
+       
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        java.util.Date d = Date.valueOf("1993-05-18");
+        java.sql.Date fecha = new java.sql.Date(d.getTime());
+        Usuario usuario = new Usuario ("Mortadelo2", "4321", "Juan", "Magan", fecha, 971971971, "jm@gmail.com");
+        
+        UsuariosDB us = new UsuariosDB();
+        
+        try {
+            if(us.crearUsuario(usuario)){
+                System.out.println("se creo");
+            }else
+                System.out.println("valiste");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } 
+    } */
      
 }

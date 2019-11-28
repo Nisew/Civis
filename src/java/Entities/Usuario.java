@@ -31,6 +31,16 @@ public class Usuario {
         this.telefono = telefono;
         this.correo = correo;
     }
+    
+    public Usuario (String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
+        this.usuario = usuario;
+        this.contrasenya = contrasenya;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+        this.correo = correo;
+    }
 
     public int getId_usuario() {
         return id_usuario;
