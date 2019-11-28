@@ -42,35 +42,39 @@
 
         <div id="form-main">
           <div id="form-div">
-            <form class="form" id="form1">
+            <form class="form" id="formRegister">
 
-              <p class="titulo">
-                <input name="titulo" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Titulo" id="titulo" />
+              <p class="nombreUsuario">
+                <input name="nombreUsuario" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />
               </p>
 
-              <p class="localidad">
-                <input name="localidad" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Localidad" id="localidad" />
+              <p class="nombre">
+                <input name="nombre" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Nombre" id="nombre" />
               </p>
 
-              <p class="fecha">
-                <input name="fecha" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Fecha" id="fecha" />
+              <p class="apellidos">
+                <input name="apellidos" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Apellidos" id="apellidos" />
               </p>
 
-              <p class="hora">
-                <input name="hora" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Hora" id="hora" />
+              <p class="fechaNacimiento">
+                <input name="fechaNacimiento" type="date" class="validate[required,custom[email]] feedback-input" placeholder="Fecha Nacimiento" id="fechaNacimiento" />
               </p>
 
-              <p class="numPersonas">
-                <input name="numPersonas" type="text" class="validate[required,custom[email]] feedback-input" placeholder="NumPersonas" id="numPersonas" />
+              <p class="correo">
+                <input name="correo" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Correo Electrónico" id="correo" />
               </p>
 
-              <p class="descripcion">
-                <textarea name="descripcion" class="validate[required,length[6,300]] feedback-input" placeholder="Descripcion" id="descripcion"></textarea>
+              <p class="contra">
+                <input name="contra" type="password" class="validate[required,custom[email]] feedback-input" placeholder="Contraseña" id="contra" />
+              </p>
+
+              <p class="repiteContra">
+                <input name="repiteContra" type="password" class="validate[required,custom[email]] feedback-input" placeholder="Repetir Contraseña" id="repiteContra" />
               </p>
 
 
               <div class="submit">
-                <input type="submit" value="ENVIAR" id="button-blue"/>
+                <input type="submit" value="REGISTER" id="button-blue"/>
                 <div class="ease"></div>
               </div>
             </form>

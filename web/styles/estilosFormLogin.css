@@ -46,7 +46,7 @@
 	box-shadow: 0;
 	border: 3px solid black;
 	color: black;
-	font-weight: bold;
+  font-weight: bold;
 	outline: none;
   padding: 13px 13px 13px 54px;
 }
@@ -171,7 +171,7 @@ input:focus, textarea:focus {
 }
 
 .submit:hover {
-	color: black;
+	color: #3498db;
 }
 
 .ease {
@@ -199,4 +199,20 @@ input:focus, textarea:focus {
 		padding-left: 3%;
 		padding-right: 3%;
 	}
+}
+
+.form .message {
+  margin-top: 15px;
+  color: black;
+  font-size: 19px;
+  text-align: center;
+  padding: 18px;
+}
+.form .message a {
+  color: #4950F4;
+  text-decoration: none;
+}
+
+.centrado {
+
 }

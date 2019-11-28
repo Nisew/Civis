@@ -53,7 +53,7 @@
   transition: left 0.2s;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   width: 100%;
   font-size: 0.9rem;
 }
@@ -197,9 +197,28 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.btnRecuadro {
+    display: inline-block;
+    font-weight: bold;
+    color: #212529;
+    position: relative;
+    float: right;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
 .btn {
-  margin-top: 20px;
   color: black;
   font-weight: bold;
   position: relative;
@@ -207,13 +226,40 @@
 }
 
 .btn-normal {
+  margin-top: 20px;
   background-color: #D3CECE;
 }
 
 .btn-success {
+  margin-top: 20px;
   background-color: #5ad67d;
 }
 
 .btn-danger {
+  margin-top: 20px;
   background-color: #F23737;
+}
+
+.btn-accept {
+  margin-top: 0px;
+  color: white;
+  background-color: #54F449;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.btn-discard {
+  margin-top: 0px;
+  color: white;
+  background-color: #F82020;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.recuadroNombres {
+  margin-top: 20px;
+  padding: 10px;
+
 }
