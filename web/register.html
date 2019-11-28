@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/estilosNavBar.css">
     <link rel="stylesheet" href="./styles/estilosCarta.css">
-    <link rel="stylesheet" href="./styles/estilosFormLogin.css">
+    <link rel="stylesheet" href="./styles/estilosFormEvento.css">
   </head>
   <body>
 
@@ -42,27 +42,42 @@
 
         <div id="form-main">
           <div id="form-div">
-            <form class="form" id="formLogin" align:center>
+            <form class="form" id="formRegister">
 
               <p class="nombreUsuario">
                 <input name="nombreUsuario" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />
+              </p>
+
+              <p class="nombre">
+                <input name="nombre" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Nombre" id="nombre" />
+              </p>
+
+              <p class="apellidos">
+                <input name="apellidos" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Apellidos" id="apellidos" />
+              </p>
+
+              <p class="fechaNacimiento">
+                <input name="fechaNacimiento" type="date" class="validate[required,custom[email]] feedback-input" placeholder="Fecha Nacimiento" id="fechaNacimiento" />
+              </p>
+
+              <p class="correo">
+                <input name="correo" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Correo Electrónico" id="correo" />
               </p>
 
               <p class="contra">
                 <input name="contra" type="password" class="validate[required,custom[email]] feedback-input" placeholder="Contraseña" id="contra" />
               </p>
 
+              <p class="repiteContra">
+                <input name="repiteContra" type="password" class="validate[required,custom[email]] feedback-input" placeholder="Repetir Contraseña" id="repiteContra" />
+              </p>
+
+
               <div class="submit">
-                <input type="submit" value="LOGIN" id="button-blue"/>
+                <input type="submit" value="REGISTER" id="button-blue"/>
                 <div class="ease"></div>
               </div>
-
-              <div class="container">
-                <p class="message">¿No tienes una cuenta? <a href="./register.html">Crea una ahora</a></p>
-              </div>
-
             </form>
-
           </div>
         </div>
 
