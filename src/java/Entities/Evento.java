@@ -4,7 +4,12 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+
+
 public class Evento {
+    
+    
+    
     
     private int id_evento;
     private String titulo;
@@ -16,8 +21,12 @@ public class Evento {
     private String descripcion;
     private int num_ayudante;
     private int id_creador;
+    private Date fechaRegistro;
+
 
     public Evento () {    
+        
+   
     }
 
     public Evento(int id_evento, String titulo, String ubicacion, String descripcion, int num_ayudante,int id_creador ) {
@@ -138,7 +147,7 @@ public class Evento {
     
     public static String fechaActual(){
        
-    DateFormat horaFormato = new SimpleDateFormat("yyyy-mm-dd");
+    DateFormat horaFormato = new SimpleDateFormat("dd-MM-YYYY");
     String fechaActual = horaFormato.format(new Date());
     
         
