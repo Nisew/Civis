@@ -1,27 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Usuario
- */
 public class ConnectionDB {
-    Connection conn;
     
-    public void openConnection() throws SQLException, ClassNotFoundException{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/voluntariobd?serverTimezone=UTC&useSSL=false", "root", "root");
-    }
+    public static final String URL = "jdbc:mysql://localhost:3306/voluntariobd?useSSL=false&serverTimezone=UTC";
+    public static final String usuario = "root";
+    public static final String contraseña = "root";
 
-    public void closeConnection() throws SQLException{
-            conn.close();
+    public static Connection conexion() {
+
+        try {
+  
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(URL, usuario, contraseña);
+            return con;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 }

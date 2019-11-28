@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Database;
 
 import Entities.Evento;
@@ -12,11 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-/**
- *
- * @author Usuario
- */
+
 public class UsuariosDB {
+ 
     Connection con;
     
     //Metodo para registrarse
@@ -96,10 +89,10 @@ public class UsuariosDB {
                     rs.getInt("id_evento"),
                     rs.getString("titulo"),
                     rs.getString("ubicacion"),
-                    rs.getTime("hora_registro"),
-                    rs.getDate("fecha_registro"),
-                    rs.getTime("hora_evento"),
-                    rs.getDate("fecha_evento"),
+                    rs.getString("hora_resgistro"),
+                    rs.getString("fecha_registro"),
+                    rs.getString("hora_evento"),
+                    rs.getString("fecha_evento"),
                     rs.getString("descripcion"),
                     rs.getInt("num_ayudante"),
                     rs.getBoolean("inscrito"),
@@ -138,10 +131,10 @@ public class UsuariosDB {
                     rs.getInt("id_evento"),
                     rs.getString("titulo"),
                     rs.getString("ubicacion"),
-                    rs.getTime("hora_resgistro"),
-                    rs.getDate("fecha_registro"),
-                    rs.getTime("hora_evento"),
-                    rs.getDate("fecha_evento"),
+                    rs.getString("hora_resgistro"),
+                    rs.getString("fecha_registro"),
+                    rs.getString("hora_evento"),
+                    rs.getString("fecha_evento"),
                     rs.getString("descripcion"),
                     rs.getInt("num_ayudante"),
                     rs.getBoolean("inscrito"),
@@ -172,4 +165,5 @@ public class UsuariosDB {
             rs.getString("correo");
         }        
     }
+     
 }

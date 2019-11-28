@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Database;
 
-/**
- *
- * @author Usuario
- */
 import Entities.Evento;
 import Entities.Usuario;
 import java.sql.Connection;
@@ -23,26 +14,31 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EventosDB {
+    
     Connection con;
     
     //Metodo para crear un evento
     public boolean crearEvento(Evento e) throws SQLException {
         
         boolean existe = false;
-        
+        con = ConnectionDB.conexion();
                 
         PreparedStatement ps = con.prepareStatement("INSERT INTO eventos (titulo,ubicacion,hora_registro,fecha_registro, hora_evento, fecha_evento, descripcion, num_ayudante,id_creador) VALUES(?,?,?,?,?,?,?,?,?)");
-         
+            
+        
+        String fe = "2013-09-04";
+        
             ps.setString(1, e.getTitulo());
             ps.setString(2, e.getUbicacion());
             ps.setTime(3, Time.valueOf(e.getHora_registro()));
-            ps.setDate(4, Date.valueOf(e.getFecha_registro()));
+            ps.setDate(4, Date.valueOf(fe));
             ps.setTime(5, Time.valueOf(e.getHora_evento()));
-            ps.setDate(6, Date.valueOf(e.getFecha_evento()));
+            ps.setDate(6,  Date.valueOf(fe));
             ps.setString(7, e.getDescripcion());
             ps.setInt(8, e.getNum_ayudante()); 
             ps.setInt(9, e.getId_creador());
             ps.executeUpdate();
+            existe= true;
     
         return existe;
     }

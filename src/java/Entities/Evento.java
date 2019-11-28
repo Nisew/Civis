@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entities;
 
-/**
- *
- * @author Usuario
- */
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class Evento {
+    
     private int id_evento;
     private String titulo;
     private String ubicacion;
@@ -146,10 +138,11 @@ public class Evento {
     
     public static String fechaActual(){
        
-    DateFormat horaFormato = new SimpleDateFormat("yyyy:MM:dd");
+    DateFormat horaFormato = new SimpleDateFormat("yyyy-mm-dd");
     String fechaActual = horaFormato.format(new Date());
     
         
     return fechaActual;
     }
+  
 }
