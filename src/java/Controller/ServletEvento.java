@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ *
+ * @author Usuario
+ */
 @WebServlet(urlPatterns = {"/evento"})
 public class ServletEvento extends HttpServlet {
 
@@ -33,24 +37,26 @@ public class ServletEvento extends HttpServlet {
         int np =  Integer.parseInt(numPersonas);
      
         Evento evento1 = new Evento(tituloEvento, ubicacion, hora_evento, fecha_evento, descripcion, np);
-             
+        
+     
         try {
             EventosDB eventoDB = new EventosDB();
             if(eventoDB.crearEvento(evento1)){
-                
-                
-                System.out.println("Se creo el evento");
-            }else{
-                System.out.println("no se creo BOludo");
+               
             }
+            
+          
             
         } catch (SQLException ex) {
             Logger.getLogger(ServletEvento.class.getName()).log(Level.SEVERE, null, ex);
-        }         
+        }
+         
 
         request.setAttribute("user", tituloEvento);
         RequestDispatcher rd = request.getRequestDispatcher("jspok.jsp"); //
         rd.forward(request, response); 
+        
+    
         
     }
 
