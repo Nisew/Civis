@@ -10,6 +10,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +26,6 @@ public class EventosDB {
                 
         PreparedStatement ps = con.prepareStatement("INSERT INTO eventos (titulo,ubicacion,hora_registro,fecha_registro, hora_evento, fecha_evento, descripcion, num_ayudante,id_creador) VALUES(?,?,?,?,?,?,?,?,?)");
             
-   
             ps.setString(1, e.getTitulo());
             ps.setString(2, e.getUbicacion());
             ps.setTime(3, Time.valueOf(e.getHora_registro()));
@@ -34,10 +34,10 @@ public class EventosDB {
             ps.setDate(6,  Date.valueOf(e.getFecha_evento()));
             ps.setString(7, e.getDescripcion());
             ps.setInt(8, e.getNum_ayudante()); 
-            ps.setInt(9, e.getId_creador());
+            ps.setInt(9, 1);
+           
+            existe= true;      
             ps.executeUpdate();
-            existe= true;
-    
         return existe;
     }
     
@@ -74,6 +74,37 @@ public class EventosDB {
         */
         return eventos;
     }
+    
+    /*PROBAR METODOS.
+    public static void main(String[] args) {
+        
+        Evento evento1 = new Evento();
+        
+        SimpleDateFormat formatoHora = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha= formatoHora.format(12-05-2010);
+        
+        evento1.setTitulo("SAlir");
+        evento1.setHora_evento("10:20:30");
+        evento1.setFecha_evento(fecha);
+        
+        EventosDB b1 = new EventosDB();
+        
+        System.out.println(Evento.horaActual());
+        System.out.println(evento1.getFecha_registro());
+        
+        
+       
+        try {
+            b1.crearEvento(evento1);
+            System.out.println("bien");
+        } catch (SQLException ex) {
+          ex.printStackTrace();
+        }
+        
+        
+    }
+    */
+    
     
     
 }
