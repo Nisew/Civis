@@ -41,7 +41,7 @@ public class ServletUsuario extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String apellidos = request.getParameter("apellidos");
         String telefono = request.getParameter("telefono");
-        java.util.Date fecha_nacimiento = request.getParameter(Date.valueOf("fecha_nacimiento"));
+        String fecha_nacimiento = request.getParameter("fecha_nacimiento");
         String correo = request.getParameter("correo");
         
         Usuario u_nuevo = new Usuario();

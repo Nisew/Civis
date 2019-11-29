@@ -18,14 +18,14 @@ public class Usuario {
     String nombre;
     String apellidos;
     Date fechaNacimiento;
-    int telefono;
+    String telefono;
     String correo;
     
     public Usuario (){
         
     }
 
-    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
+    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, String telefono, String correo) {
         this.id_usuario = id_usuario;
         this.usuario = usuario;
         this.contrasenya = contrasenya;
@@ -36,7 +36,7 @@ public class Usuario {
         this.correo = correo;
     }
     
-    public Usuario (String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
+    public Usuario (String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, String telefono, String correo) {
         this.usuario = usuario;
         this.contrasenya = contrasenya;
         this.nombre = nombre;
@@ -94,11 +94,11 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
