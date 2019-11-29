@@ -17,7 +17,7 @@ public class Usuario {
     String contrasenya;
     String nombre;
     String apellidos;
-    Date fechaNacimiento;
+    String fechaNacimiento;
     String telefono;
     String correo;
     
@@ -25,7 +25,7 @@ public class Usuario {
         
     }
 
-    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, String telefono, String correo) {
+    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos,String fechaNacimiento, String telefono, String correo) {
         this.id_usuario = id_usuario;
         this.usuario = usuario;
         this.contrasenya = contrasenya;
@@ -36,7 +36,7 @@ public class Usuario {
         this.correo = correo;
     }
     
-    public Usuario (String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, String telefono, String correo) {
+    public Usuario (String usuario, String contrasenya, String nombre, String apellidos, String fechaNacimiento, String telefono, String correo) {
         this.usuario = usuario;
         this.contrasenya = contrasenya;
         this.nombre = nombre;
@@ -86,11 +86,11 @@ public class Usuario {
         this.apellidos = apellidos;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

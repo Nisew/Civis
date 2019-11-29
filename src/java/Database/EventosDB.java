@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 public class EventosDB {
     
     Connection con;
+    PreparedStatement ps;
     
     //Metodo para crear un evento
     public boolean crearEvento(Evento e) throws SQLException {
@@ -24,7 +25,7 @@ public class EventosDB {
         boolean existe = false;
         con = ConnectionDB.conexion();
                 
-        PreparedStatement ps = con.prepareStatement("INSERT INTO eventos (titulo,ubicacion,hora_registro,fecha_registro, hora_evento, fecha_evento, descripcion, num_ayudante,id_creador) VALUES(?,?,?,?,?,?,?,?,?)");
+         ps = con.prepareStatement("INSERT INTO eventos (titulo,ubicacion,hora_registro,fecha_registro, hora_evento, fecha_evento, descripcion, num_ayudante,id_creador) VALUES(?,?,?,?,?,?,?,?,?)");
             
             ps.setString(1, e.getTitulo());
             ps.setString(2, e.getUbicacion());
@@ -38,23 +39,24 @@ public class EventosDB {
            
             existe= true;      
             ps.executeUpdate();
+            ps.close();
         return existe;
     }
     
     //Metodo para ver los eventos a los que estas escritos
-    public ArrayList<Evento> mostrarEventosInscritos(Usuario u) throws SQLException {
-        
+    public ArrayList<Evento> mostrarEventosInscritos() throws SQLException {
+        con = ConnectionDB.conexion();
         ArrayList<Evento> eventos = new ArrayList<>();
+        ResultSet rs= null;
         
-        PreparedStatement ps = con.prepareStatement("SELECT * FROM eventos e JOIN ayudantes a ON a.id_evento = e.id_evento + WHERE a.id_usuario = ? AND e.id_creador = a.id_usuario ");
-        ps.setInt(1, u.getId_usuario());
+        ps = con.prepareStatement("SELECT * FROM eventos e JOIN ayudantes a ON a.id_evento = e.id_evento WHERE a.id_usuario = 1 AND e.id_creador = a.id_usuario");
+       // ps.setInt(1, 1);
         
-        ResultSet rs = ps.executeQuery();
-        /*
+        rs = ps.executeQuery();
+        
         while (rs.next()) {            
-            if (u.getId_usuario() == rs.getInt("a.id_usuario")) {
-                eventos.add(new Evento(
-                        rs.getInt("id_usuario"),
+                         eventos.add(new Evento(
+                        rs.getInt("id_evento"),
                         rs.getString("titulo"),
                         rs.getString("ubicacion"),
                         rs.getString("hora_registro"),
@@ -62,46 +64,33 @@ public class EventosDB {
                         rs.getString("hora_evento"),
                         rs.getString("fecha_evento"),
                         rs.getString("descripcion"),
-                        rs.getInt("num_ayudantes"),
-                        rs.getBoolean("inscrito"),
-                        rs.getBoolean("aceptado"),
-                        rs.getBoolean("confirmado"),
+                        rs.getInt("num_ayudante"),
                         rs.getInt("id_creador")));
             }
-        }
-        */
+        
         return eventos;
     }
     
-    /*PROBAR METODOS.
+   
     public static void main(String[] args) {
         
-        Evento evento1 = new Evento();
-        
-        SimpleDateFormat formatoHora = new SimpleDateFormat("yyyy-MM-dd");
-        String fecha= formatoHora.format(12-05-2010);
-        
-        evento1.setTitulo("SAlir");
-        evento1.setHora_evento("10:20:30");
-        evento1.setFecha_evento(fecha);
-        
         EventosDB b1 = new EventosDB();
-        
-        System.out.println(Evento.horaActual());
-        System.out.println(evento1.getFecha_registro());
-        
-        
-       
         try {
-            b1.crearEvento(evento1);
-            System.out.println("bien");
+           ArrayList<Evento> eventos = b1.mostrarEventosInscritos();
+           
+           for(int i=0;i<eventos.size();i++){
+                
+               System.out.println(eventos.get(i));
+           }
+          
         } catch (SQLException ex) {
-          ex.printStackTrace();
+         
+            ex.printStackTrace();
         }
         
         
     }
-    */
+
     
     
     
