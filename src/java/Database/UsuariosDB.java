@@ -40,7 +40,7 @@ public class UsuariosDB {
             ps1.setString(3, u.getNombre());
             ps1.setString(4, u.getApellidos());
             ps1.setDate(5, u.getFechaNacimiento());
-            ps1.setInt(6, u.getTelefono());
+            ps1.setString(6, u.getTelefono());
             ps1.setString(7, u.getCorreo());
         
             ps1.executeUpdate();
@@ -67,7 +67,7 @@ public class UsuariosDB {
                 u.setNombre(rs.getString("nombre"));
                 u.setApellidos(rs.getString("apellidos"));
                 u.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
-                u.setTelefono(rs.getInt("telefono"));
+                u.setTelefono(rs.getString("telefono"));
                 u.setCorreo(rs.getString("correo"));
                 
                 logueado = true;
