@@ -1,8 +1,13 @@
 package Controller;
 
+import Database.EventosDB;
 import Entities.Evento;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,21 +27,39 @@ public class ServletEvento extends HttpServlet {
         
         String tituloEvento= request.getParameter("tituloEvento");
         String ubicacion= request.getParameter("localidad");
-        String horaEvento = request.getParameter("hora");
+        String hora_evento= request.getParameter("hora");
+        String fecha_evento = request.getParameter("fecha");
         String numPersonas = request.getParameter("numeroPersonas");
         String descripcion = request.getParameter("descripcion");
+        
+        hora_evento +=":00";
+        
+        int np =  Integer.parseInt(numPersonas);
      
-        Evento evento1 = new Evento();
-        evento1.setTitulo(tituloEvento);
-        evento1.setUbicacion(ubicacion);
-        evento1.setHora_evento(horaEvento);
-        evento1.setFecha_evento("2019-04-21");
-        evento1.setNum_ayudante(Integer.parseInt(numPersonas));
-        evento1.setDescripcion(descripcion);
+        Evento evento1 = new Evento(tituloEvento, ubicacion, hora_evento, fecha_evento, descripcion, np);
         
+     
+        try {
+            EventosDB eventoDB = new EventosDB();
+            if(eventoDB.crearEvento(evento1)){
+                
+                System.out.println("Se creo el evento");
+            }else{
+                System.out.println("no se creo BOludo");
+            }
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletEvento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+
+        request.setAttribute("user", tituloEvento);
+        RequestDispatcher rd = request.getRequestDispatcher("jspok.jsp"); //
+        rd.forward(request, response); 
         
-        
-        
+    
         
     }
 
