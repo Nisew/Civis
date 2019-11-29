@@ -46,9 +46,7 @@ public class EventosDB {
         
         ArrayList<Evento> eventos = new ArrayList<>();
         
-        String sql = "SELECT * FROM eventos e JOIN ayudantes a ON a.id_evento = e.id_evento "
-                + "WHERE a.id_usuario = ? AND e.id_creador = a.id_usuario ";
-        PreparedStatement ps = con.prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM eventos e JOIN ayudantes a ON a.id_evento = e.id_evento + WHERE a.id_usuario = ? AND e.id_creador = a.id_usuario ");
         ps.setInt(1, u.getId_usuario());
         
         ResultSet rs = ps.executeQuery();
