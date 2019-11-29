@@ -77,34 +77,35 @@ public class UsuariosDB {
     }
     
     //Metodo para listar todos los eventos por nombre de usuario
-    public ArrayList<Evento> listarEventos(Usuario u) throws SQLException {
+    public ArrayList<Evento> listarEventosPropios(Usuario u) throws SQLException {
         
         ArrayList<Evento> eventos = new ArrayList<>();
         
-        String sql = "SELECT evento WHERE id_usuario = ? ";
-        PreparedStatement ps = con.prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM eventos e JOIN usuarios u ON e.id_creador = ?");
         ps.setInt(1, u.getId_usuario());
         
         ResultSet rs = ps.executeQuery();
         
         
-//        while (rs.next()) {            
-//            eventos.add(new Evento(
-//                    rs.getInt("id_evento"),
-//                    rs.getString("titulo"),
-//                    rs.getString("ubicacion"),
-//                    rs.getString("hora_resgistro"),
-//                    rs.getString("fecha_registro"),
-//                    rs.getString("hora_evento"),
-//                    rs.getString("fecha_evento"),
-//                    rs.getString("descripcion"),
-//                    rs.getInt("num_ayudante"),
-//                    rs.getBoolean("inscrito"),
-//                    rs.getBoolean("aceptado"),
-//                    rs.getBoolean("confirmado"),
-//                    rs.getInt("id_creador")));
-//        }
+        while (rs.next()) {
+            eventos.add(new Evento(
+                    rs.getInt("id_evento"),
+                    rs.getString("titulo"),
+                    rs.getString("ubicacion"),
+                    rs.getString("hora_registro"),
+                    rs.getString("fecha_registro"),
+                    rs.getString("hora_evento"),
+                    rs.getString("fecha_evento"),
+                    rs.getString("descripcion"),
+                    rs.getInt("num_ayudante"),
+                    rs.getInt("id_creador")));
+        }
+        for(int i = 0; i < eventos.size(); i++)
+        {
+            System.out.println(eventos.get(i).toString());
+        }
         return eventos;
+        
     }  
     
     //Metodo para inscribirse en un evento
@@ -171,7 +172,7 @@ public class UsuariosDB {
         System.out.println("" + u);
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
        
         Usuario user = new Usuario();
         user.setUsuario("Anthony69");
@@ -180,11 +181,12 @@ public class UsuariosDB {
         
         try {
             us.verUsuario(user);
+            us.listarEventosPropios(user);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } 
     }
-    */
+    
     
      
 }
