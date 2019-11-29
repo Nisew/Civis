@@ -169,7 +169,10 @@ public class UsuariosDB {
             rs.getString("correo");
         }        
     }
-   // El main es un ejemplo de como ejecutar. 
+    
+    
+    
+   // El main es un ejemplo de como ejecutar 
     /*
     public static void main(String[] args) {
        

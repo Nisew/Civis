@@ -43,6 +43,7 @@ public class ServletEvento extends HttpServlet {
             EventosDB eventoDB = new EventosDB();
             if(eventoDB.crearEvento(evento1)){
                 
+                
                 System.out.println("Se creo el evento");
             }else{
                 System.out.println("no se creo BOludo");
