@@ -152,45 +152,40 @@ public class UsuariosDB {
     //Metodo para mostrar perfil de un usuario
     public void verUsuario(Usuario u) throws SQLException {
         
-        String sql = "SELECT * FROM usuarios WHERE id_usuario = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, u.getId_usuario());
+     
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
+        ps.setString(1, u.getUsuario());
         
         ResultSet rs = ps.executeQuery();
         
         while(rs.next()) {
-            rs.getInt("id_usuario");
-            rs.getString("usuario");
-            rs.getString("contrasenya");
-            rs.getString("nombre");
-            rs.getString("apellidos");
-            rs.getDate("fecha_nacimiento");
-            rs.getInt("telefono");
-            rs.getString("correo");
-        }        
-    }
-    
-    
-    
-   // El main es un ejemplo de como ejecutar 
-    /*
-    public static void main(String[] args) {
-       
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-        java.util.Date d = Date.valueOf("1993-05-18");
-        java.sql.Date fecha = new java.sql.Date(d.getTime());
-        Usuario usuario = new Usuario ("Mortadelo2", "4321", "Juan", "Magan", fecha, 971971971, "jm@gmail.com");
+            u.setId_usuario(rs.getInt("id_usuario"));
+            u.setUsuario(rs.getString("usuario"));
+            u.setContrasenya(rs.getString("contrasenya")); 
+            u.setNombre(rs.getString("nombre"));
+            u.setApellidos(rs.getString("apellidos"));
+            u.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+            u.setTelefono(rs.getString("telefono"));
+            u.setCorreo(rs.getString("correo"));
+        }
         
-        UsuariosDB us = new UsuariosDB();
+        System.out.println("" + u);
+    } 
+    
+    
+  
+    
+     public static void main(String[] args) {
+        Usuario user1 = new Usuario();
+        user1.setUsuario("Anthony69");
+        
+        UsuariosDB userDB = new UsuariosDB();
         
         try {
-            if(us.crearUsuario(usuario)){
-                System.out.println("se creo");
-            }else
-                System.out.println("valiste");
+            userDB.verUsuario(user1);
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } 
-    } */
-     
+        }
+    }
+    
 }
