@@ -179,7 +179,7 @@ public class UsuariosDB {
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
         java.util.Date d = Date.valueOf("1993-05-18");
         java.sql.Date fecha = new java.sql.Date(d.getTime());
-        Usuario usuario = new Usuario ("Mortadelo2", "4321", "Juan", "Magan", fecha, 971971971, "jm@gmail.com");
+        Usuario usuario = new Usuario ("Mortadelo2", "4321", "Juan", "Magan", fecha, "971971971", "jm@gmail.com");
         
         UsuariosDB us = new UsuariosDB();
         
@@ -192,5 +192,7 @@ public class UsuariosDB {
             ex.printStackTrace();
         } 
     } */
+    
+    //
      
 }

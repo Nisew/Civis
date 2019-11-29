@@ -25,7 +25,7 @@ public class Usuario {
         
     }
 
-    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos,String fechaNacimiento, String telefono, String correo) {
+    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, String fechaNacimiento, String telefono, String correo) {
         this.id_usuario = id_usuario;
         this.usuario = usuario;
         this.contrasenya = contrasenya;
