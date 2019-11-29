@@ -42,7 +42,7 @@ public class ServletUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         //Registro de usuario nuevo        
-        String usuario = request.getParameter("nombreUsuario");
+        /* String usuario = request.getParameter("nombreUsuario");
         String psswrd = request.getParameter("contrasenya");
         String nombre = request.getParameter("nombre");
         String apellidos = request.getParameter("apellidos");
@@ -65,6 +65,30 @@ public class ServletUsuario extends HttpServlet {
         request.setAttribute("user", u_nuevo);
         RequestDispatcher rd = request.getRequestDispatcher("register.jsp"); //
         rd.forward(request, response);
+         */
+        //Login
+        String usuario = request.getParameter("nombreUsuario");
+        String contrasenya = request.getParameter("contrasenya");
+
+        boolean logueado = false;
+        Usuario u_login = new Usuario(usuario, contrasenya);
+        UsuariosDB userlogin = new UsuariosDB();
+        try {
+
+            logueado = userlogin.iniciarSesion(u_login);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        if (logueado) {
+            request.setAttribute("user", u_login);
+            RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
+            rd.forward(request, response);
+        } else {
+            request.setAttribute("user", u_login);
+            RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
+            rd.forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

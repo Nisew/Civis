@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 
 public class UsuariosDB {
  
@@ -51,6 +52,7 @@ public class UsuariosDB {
     //Metodo para iniciar sesion
     public boolean iniciarSesion(Usuario u) throws SQLException {
         
+        con = ConnectionDB.conexion();
         boolean logueado = false;
         
         String sql = "SELECT usuario WHERE usuario = ?";
@@ -172,7 +174,7 @@ public class UsuariosDB {
     
     
     
-   // El main es un ejemplo de como ejecutar 
+   // El main es un ejemplo de registro 
     /*
     public static void main(String[] args) {
        
@@ -193,6 +195,18 @@ public class UsuariosDB {
         } 
     } */
     
-    //
+    //Ejemplo de inicio de sesion
+    public static void main(String[] args) {
+        Usuario usuario = new Usuario("Anthony69", "1234");
+        
+        UsuariosDB udb = new UsuariosDB();
+        boolean logueado = false;
+        try {
+            logueado = udb.iniciarSesion(usuario);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
      
 }
