@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,12 +42,12 @@ public class ServletUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         //Registro de usuario nuevo        
-        String usuario = request.getParameter("usuario");
+        String usuario = request.getParameter("nombreUsuario");
         String psswrd = request.getParameter("contrasenya");
         String nombre = request.getParameter("nombre");
         String apellidos = request.getParameter("apellidos");
         String telefono = request.getParameter("telefono");
-        String fecha_nacimiento = request.getParameter("fecha_nacimiento");
+        String fecha_nacimiento = request.getParameter("fechaNacimiento");
         String correo = request.getParameter("correo");
 
         Usuario u_nuevo = new Usuario(usuario, psswrd, nombre, apellidos, fecha_nacimiento, telefono, correo);
@@ -55,11 +56,14 @@ public class ServletUsuario extends HttpServlet {
             UsuariosDB nuevousuario = new UsuariosDB();
             nuevousuario.crearUsuario(u_nuevo);
         } catch (SQLException ex) {
-            Logger.getLogger(ServletUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
 
-        request.setAttribute("user", usuario);
-        RequestDispatcher rd = request.getRequestDispatcher("jspok.jsp"); //
+        Cookie ck = new Cookie("user", "sonoo jaiswal");//creating cookie object  
+        response.addCookie(ck);//adding cookie in the response  
+
+        request.setAttribute("user", u_nuevo);
+        RequestDispatcher rd = request.getRequestDispatcher("register.jsp"); //
         rd.forward(request, response);
     }
 
