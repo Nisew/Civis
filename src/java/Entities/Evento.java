@@ -4,7 +4,12 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+
+
 public class Evento {
+    
+    
+    
     
     private int id_evento;
     private String titulo;
@@ -17,35 +22,25 @@ public class Evento {
     private int num_ayudante;
     private int id_creador;
 
+
+
     public Evento () {    
+        
+   
     }
 
-    public Evento(int id_evento, String titulo, String ubicacion, String descripcion, int num_ayudante,int id_creador ) {
-        this.id_evento = id_evento;
+    public Evento(String titulo, String ubicacion, String hora_evento, String fecha_evento, String descripcion, int num_ayudante) {
         this.titulo = titulo;
         this.ubicacion = ubicacion;
         this.hora_registro = horaActual();
         this.fecha_registro = fechaActual();
-        this.hora_evento = horaActual();
-        this.fecha_evento = fechaActual();
-        this.descripcion = descripcion;
-        this.num_ayudante = num_ayudante;
-        this.id_creador = id_creador;
-    }
-    
-    public Evento (int id_evento, String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, boolean inscrito, boolean aceptado, boolean confirmado, int id_creador) {
-        this.id_evento = id_evento;
-        this.titulo = titulo;
-        this.ubicacion = ubicacion;
-        this.hora_registro = hora_registro;
-        this.fecha_registro = fecha_registro;
         this.hora_evento = hora_evento;
         this.fecha_evento = fecha_evento;
         this.descripcion = descripcion;
         this.num_ayudante = num_ayudante;
-   
-        this.id_creador = id_creador;
+        this.id_creador = 1;
     }
+
 
     public int getId_evento() {
         return id_evento;
@@ -134,8 +129,7 @@ public class Evento {
         return horaActual;
     }
     
-    
-    
+
     public static String fechaActual(){
        
     DateFormat horaFormato = new SimpleDateFormat("YYYY-MM-dd");

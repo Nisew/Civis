@@ -25,9 +25,7 @@ public class EventosDB {
                 
         PreparedStatement ps = con.prepareStatement("INSERT INTO eventos (titulo,ubicacion,hora_registro,fecha_registro, hora_evento, fecha_evento, descripcion, num_ayudante,id_creador) VALUES(?,?,?,?,?,?,?,?,?)");
             
-        
-        
-        
+   
             ps.setString(1, e.getTitulo());
             ps.setString(2, e.getUbicacion());
             ps.setTime(3, Time.valueOf(e.getHora_registro()));
@@ -54,7 +52,7 @@ public class EventosDB {
         ps.setInt(1, u.getId_usuario());
         
         ResultSet rs = ps.executeQuery();
-        
+        /*
         while (rs.next()) {            
             if (u.getId_usuario() == rs.getInt("a.id_usuario")) {
                 eventos.add(new Evento(
@@ -73,26 +71,9 @@ public class EventosDB {
                         rs.getInt("id_creador")));
             }
         }
+        */
         return eventos;
     }
     
-    public static void main(String[] args){
-        
-        Evento e = new Evento(1,"Dar de comer a perros ", "Calle falsa 123","iras a pasear m perro pendejo ", 2,1);
-        
-        EventosDB p = new EventosDB();
-        
-        try {
-            if(p.crearEvento(e)){
-                System.out.println("se creo");
-            }else
-                System.out.println("valiste");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
-  
-        
-        
-    }
+    
 }

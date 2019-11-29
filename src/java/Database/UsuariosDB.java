@@ -87,22 +87,23 @@ public class UsuariosDB {
         
         ResultSet rs = ps.executeQuery();
         
-        while (rs.next()) {            
-            eventos.add(new Evento(
-                    rs.getInt("id_evento"),
-                    rs.getString("titulo"),
-                    rs.getString("ubicacion"),
-                    rs.getString("hora_resgistro"),
-                    rs.getString("fecha_registro"),
-                    rs.getString("hora_evento"),
-                    rs.getString("fecha_evento"),
-                    rs.getString("descripcion"),
-                    rs.getInt("num_ayudante"),
-                    rs.getBoolean("inscrito"),
-                    rs.getBoolean("aceptado"),
-                    rs.getBoolean("confirmado"),
-                    rs.getInt("id_creador")));
-        }
+        
+//        while (rs.next()) {            
+//            eventos.add(new Evento(
+//                    rs.getInt("id_evento"),
+//                    rs.getString("titulo"),
+//                    rs.getString("ubicacion"),
+//                    rs.getString("hora_resgistro"),
+//                    rs.getString("fecha_registro"),
+//                    rs.getString("hora_evento"),
+//                    rs.getString("fecha_evento"),
+//                    rs.getString("descripcion"),
+//                    rs.getInt("num_ayudante"),
+//                    rs.getBoolean("inscrito"),
+//                    rs.getBoolean("aceptado"),
+//                    rs.getBoolean("confirmado"),
+//                    rs.getInt("id_creador")));
+//        }
         return eventos;
     }  
     
@@ -129,22 +130,22 @@ public class UsuariosDB {
         
         ResultSet rs = ps.executeQuery();
         
-         while (rs.next()) {            
-            eventos.add(new Evento(
-                    rs.getInt("id_evento"),
-                    rs.getString("titulo"),
-                    rs.getString("ubicacion"),
-                    rs.getString("hora_resgistro"),
-                    rs.getString("fecha_registro"),
-                    rs.getString("hora_evento"),
-                    rs.getString("fecha_evento"),
-                    rs.getString("descripcion"),
-                    rs.getInt("num_ayudante"),
-                    rs.getBoolean("inscrito"),
-                    rs.getBoolean("aceptado"),
-                    rs.getBoolean("confirmado"),
-                    rs.getInt("id_creador")));
-        }
+//         while (rs.next()) {            
+//            eventos.add(new Evento(
+//                    rs.getInt("id_evento"),
+//                    rs.getString("titulo"),
+//                    rs.getString("ubicacion"),
+//                    rs.getString("hora_resgistro"),
+//                    rs.getString("fecha_registro"),
+//                    rs.getString("hora_evento"),
+//                    rs.getString("fecha_evento"),
+//                    rs.getString("descripcion"),
+//                    rs.getInt("num_ayudante"),
+//                    rs.getBoolean("inscrito"),
+//                    rs.getBoolean("aceptado"),
+//                    rs.getBoolean("confirmado"),
+//                    rs.getInt("id_creador")));
+//        }
         return eventos;        
     }
     
