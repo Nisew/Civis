@@ -20,6 +20,10 @@ public class Usuario {
     Date fechaNacimiento;
     int telefono;
     String correo;
+    
+    public Usuario (){
+        
+    }
 
     public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, Date fechaNacimiento, int telefono, String correo) {
         this.id_usuario = id_usuario;
