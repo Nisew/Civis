@@ -39,7 +39,7 @@ public class UsuariosDB {
             ps1.setString(2, u.getContrasenya());
             ps1.setString(3, u.getNombre());
             ps1.setString(4, u.getApellidos());
-            ps1.setDate(5, u.getFechaNacimiento());
+            ps1.setDate(5, Date.valueOf(u.getFechaNacimiento()));
             ps1.setString(6, u.getTelefono());
             ps1.setString(7, u.getCorreo());
         
@@ -66,7 +66,7 @@ public class UsuariosDB {
                 u.setContrasenya(rs.getString("contrasenya"));
                 u.setNombre(rs.getString("nombre"));
                 u.setApellidos(rs.getString("apellidos"));
-                u.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                u.setFechaNacimiento(rs.getString("fecha_nacimiento"));
                 u.setTelefono(rs.getString("telefono"));
                 u.setCorreo(rs.getString("correo"));
                 
@@ -179,7 +179,7 @@ public class UsuariosDB {
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
         java.util.Date d = Date.valueOf("1993-05-18");
         java.sql.Date fecha = new java.sql.Date(d.getTime());
-        Usuario usuario = new Usuario ("Mortadelo2", "4321", "Juan", "Magan", fecha, 971971971, "jm@gmail.com");
+        Usuario usuario = new Usuario ("Mortadelo2", "4321", "Juan", "Magan", fecha, "971971971", "jm@gmail.com");
         
         UsuariosDB us = new UsuariosDB();
         
@@ -192,5 +192,7 @@ public class UsuariosDB {
             ex.printStackTrace();
         } 
     } */
+    
+    //
      
 }
