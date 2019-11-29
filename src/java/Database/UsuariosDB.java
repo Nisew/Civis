@@ -171,7 +171,7 @@ public class UsuariosDB {
         System.out.println("" + u);
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
        
         Usuario user = new Usuario();
         user.setUsuario("Anthony69");
@@ -184,7 +184,7 @@ public class UsuariosDB {
             ex.printStackTrace();
         } 
     }
+    */
     
-    //
      
 }
