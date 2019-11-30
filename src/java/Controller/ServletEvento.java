@@ -35,11 +35,11 @@ public class ServletEvento extends HttpServlet {
             case "newEvent":
                 // obtengo los datos introducidos por el usuario
 
-                String tituloEvento = request.getParameter("tituloEvento");
+                String tituloEvento = request.getParameter("titulo");
                 String ubicacion = request.getParameter("localidad");
                 String hora_evento = request.getParameter("hora");
                 String fecha_evento = request.getParameter("fecha");
-                String numPersonas = request.getParameter("numeroPersonas");
+                String numPersonas = request.getParameter("numPersonas");
                 String descripcion = request.getParameter("descripcion");
                 hora_evento += ":00";
                 int np = Integer.parseInt(numPersonas);
