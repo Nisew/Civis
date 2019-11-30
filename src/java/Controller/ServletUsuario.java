@@ -20,26 +20,56 @@ import javax.servlet.http.HttpServletResponse;
 public class ServletUsuario extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-        
+            throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
 
-        //Registro de usuario nuevo        
-        String usuario = request.getParameter("nombreUsuario");
-        String psswrd = request.getParameter("contrasenya");
-        String nombre = request.getParameter("nombre");
-        String apellidos = request.getParameter("apellidos");
-        String telefono = request.getParameter("telefono");
-        String fecha_nacimiento = request.getParameter("fechaNacimiento");
-        String correo = request.getParameter("correo");
+        String sa = request.getParameter("sa");
+        String id = request.getParameter("idUsuario");
+        int idUsuario = Integer.parseInt(id);
 
-        Usuario u_nuevo = new Usuario(usuario, psswrd, nombre, apellidos, fecha_nacimiento, telefono, correo);
+        switch (sa) {
+            case "newUsuario":
+                //Registro de usuario nuevo        
+                String usuario = request.getParameter("nombreUsuario");
+                String psswrd = request.getParameter("contrasenya");
+                String nombre = request.getParameter("nombre");
+                String apellidos = request.getParameter("apellidos");
+                String telefono = request.getParameter("telefono");
+                String fecha_nacimiento = request.getParameter("fechaNacimiento");
+                String correo = request.getParameter("correo");
 
-        try {
-            UsuariosDB nuevousuario = new UsuariosDB();
-            nuevousuario.registroUsuario(u_nuevo);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+                Usuario u_nuevo = new Usuario(usuario, psswrd, nombre, apellidos, fecha_nacimiento, telefono, correo);
+
+                try {
+                    UsuariosDB nuevousuario = new UsuariosDB();
+                    nuevousuario.registroUsuario(u_nuevo);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            case "userLogin":
+                //Login
+                String userLogin = request.getParameter("nombreUsuario");
+                String contrasenya = request.getParameter("contrasenya");
+
+                boolean logueado = false;
+                Usuario u_login = new Usuario(userLogin, contrasenya);
+                UsuariosDB sesionUsuario = new UsuariosDB();
+                try {
+
+                    logueado = sesionUsuario.inicioSesion(userLogin, contrasenya);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                if (logueado) {
+                    request.setAttribute("user", u_login);
+                    RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
+                    rd.forward(request, response);
+                } else {
+                    request.setAttribute("user", u_login);
+                    RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
+                    rd.forward(request, response);
+                }
         }
 
         Cookie ck = new Cookie("user", "sonoo jaiswal");//creating cookie object  
@@ -48,29 +78,6 @@ public class ServletUsuario extends HttpServlet {
         request.setAttribute("user", u_nuevo);
         RequestDispatcher rd = request.getRequestDispatcher("register.jsp"); //
         rd.forward(request, response);
-        
-        /*Login
-        String usuario = request.getParameter("nombreUsuario");
-        String contrasenya = request.getParameter("contrasenya");
-
-        boolean logueado = false;
-        Usuario u_login = new Usuario(usuario, contrasenya);
-        UsuariosDB userlogin = new UsuariosDB();
-        try {
-
-            logueado = userlogin.iniciarSesion(u_login);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        if (logueado) {
-            request.setAttribute("user", u_login);
-            RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
-            rd.forward(request, response);
-        } else {
-            request.setAttribute("user", u_login);
-            RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
-            rd.forward(request, response);
-        }*/
 
     }
 

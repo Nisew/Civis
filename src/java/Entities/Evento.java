@@ -24,7 +24,28 @@ public class Evento {
     public Evento () {
         
     }
+    
+    public Evento (String pTitulo) {
+        this.titulo = pTitulo;
+    }
+    
+    public Evento (int pId, String pTitulo){
+        this.id_evento = pId;
+        this.titulo = pTitulo;
+    }
 
+    public Evento(String titulo, String ubicacion, String hora_evento, String fecha_evento, String descripcion, int num_ayudante) {
+        this.titulo = titulo;
+        this.ubicacion = ubicacion;
+        this.hora_registro = horaActual();
+        this.fecha_registro= fechaActual();
+        this.hora_evento = hora_evento;
+        this.fecha_evento = fecha_evento;
+        this.descripcion = descripcion;
+        this.num_ayudante = num_ayudante;
+        this.id_creador = 1;
+    }
+    
     public Evento(int id_evento, String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, int id_creador) {
         this.id_evento = id_evento;
         this.titulo = titulo;

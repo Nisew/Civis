@@ -44,13 +44,13 @@ public class EventosDB {
     }
     
     //Metodo para ver los eventos a los que estas escritos
-    public ArrayList<Evento> mostrarEventosInscritos() throws SQLException {
+    public ArrayList<Evento> mostrarEventosInscritos(Usuario u) throws SQLException {
         con = ConnectionDB.conexion();
         ArrayList<Evento> eventos = new ArrayList<>();
         ResultSet rs= null;
         
-        ps = con.prepareStatement("SELECT * FROM eventos e JOIN ayudantes a ON a.id_evento = e.id_evento WHERE a.id_usuario = 1 AND e.id_creador = a.id_usuario");
-       // ps.setInt(1, 1);
+        ps = con.prepareStatement("SELECT * FROM eventos e JOIN ayudantes a ON a.id_evento = e.id_evento WHERE a.id_usuario = ? AND e.id_creador = a.id_usuario");
+        ps.setInt(1, u.getId_usuario());
         
         rs = ps.executeQuery();
         
@@ -67,29 +67,34 @@ public class EventosDB {
                         rs.getInt("num_ayudante"),
                         rs.getInt("id_creador")));
             }
-        
+        ps.close();
         return eventos;
     }
     
-   
-    public static void main(String[] args) {
-        
-        EventosDB b1 = new EventosDB();
-        try {
-           ArrayList<Evento> eventos = b1.mostrarEventosInscritos();
-           
-           for(int i=0;i<eventos.size();i++){
-                
-               System.out.println(eventos.get(i));
-           }
-          
-        } catch (SQLException ex) {
-         
-            ex.printStackTrace();
-        }
-        
-        
-    }
+//   //PROBANDO EL METODO LISTAR EVENTOS
+//    public static void main(String[] args) {
+//        
+//        
+//        
+//        EventosDB b1 = new EventosDB();
+//        Usuario u = new Usuario();
+//        u.setId_usuario(1);
+//        
+//        try {
+//           ArrayList<Evento> eventos = b1.mostrarEventosInscritos(u);
+//           
+//           for(int i=0;i<eventos.size();i++){
+//                
+//               System.out.println(eventos.get(i));
+//           }
+//          
+//        } catch (SQLException ex) {
+//         
+//            ex.printStackTrace();
+//        }
+//        
+//        
+//    }
 
     
     

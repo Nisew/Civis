@@ -15,6 +15,7 @@ public class UsuariosDB {
  
     Connection con;
     
+    
     //Metodo para registrarse
     public void registroUsuario(Usuario u) throws SQLException {
     
@@ -143,7 +144,7 @@ public class UsuariosDB {
     }
     
     //Metodo para mostrar perfil de un usuario
-    public void verUsuario(Usuario u) throws SQLException {
+    /*public void verUsuario(Usuario u) throws SQLException {
         con = ConnectionDB.conexion();
         
         PreparedStatement ps = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
