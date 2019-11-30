@@ -43,7 +43,7 @@
 
         <div id="form-main">
           <div id="form-div">
-              <form class="form" id="formLogin" action="userLogin" method="post" align:center>
+              <form class="form" id="formLogin" action="usuario?sa=userLogin" method="post" align:center>
 
               <p class="nombreUsuario">
                 <input name="nombreUsuario" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />

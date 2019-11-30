@@ -1,6 +1,7 @@
 package Controller;
 
 import Database.UsuariosDB;
+import Entities.Evento;
 import Entities.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +27,7 @@ public class ServletUsuario extends HttpServlet {
 
         String sa = request.getParameter("sa");
         String id = request.getParameter("idUsuario");
-        int idUsuario = Integer.parseInt(id);
+        //int idUsuario = Integer.parseInt(id);
 
         switch (sa) {
             case "newUsuario":
@@ -52,32 +53,66 @@ public class ServletUsuario extends HttpServlet {
                 String userLogin = request.getParameter("nombreUsuario");
                 String contrasenya = request.getParameter("contrasenya");
 
+                UsuariosDB dbLogin = new UsuariosDB();
+                                
                 boolean logueado = false;
-                Usuario u_login = new Usuario(userLogin, contrasenya);
-                UsuariosDB sesionUsuario = new UsuariosDB();
+                
                 try {
-
-                    logueado = sesionUsuario.inicioSesion(userLogin, contrasenya);
+                    logueado = dbLogin.inicioSesion(userLogin, contrasenya);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                if (logueado) {
-                    request.setAttribute("user", u_login);
+                
+                if(logueado){
+                    request.setAttribute("user", userLogin);
                     RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
                     rd.forward(request, response);
                 } else {
-                    request.setAttribute("user", u_login);
-                    RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
+                    request.setAttribute("user", userLogin);
+                    RequestDispatcher rd = request.getRequestDispatcher("lognotok.jsp"); //
                     rd.forward(request, response);
                 }
+
+                
+            case "showEvents":
+                //Listar eventos Propios
+                String nombreUsuarioPropios = request.getParameter("nombreUsuario");
+                
+                
+                Usuario userEventosPropios = new Usuario(nombreUsuarioPropios);
+                UsuariosDB udbeventos = new UsuariosDB();
+                
+                try{
+                    udbeventos.listarEventosPropios(userEventosPropios);
+                } catch (SQLException ex){
+                    ex.printStackTrace();
+                }
+                
+            case "joinEvent":
+                //Unirse a evento de otro usuario
+                String userEvento = request.getParameter("nombreUsuario");
+                String eventoTitulo = request.getParameter("tituloEvento");
+                
+                Usuario usuarioEvento = new Usuario(userEvento);
+                Evento eventoAUnir = new Evento(eventoTitulo);
+                UsuariosDB usuarioUneEvento = new UsuariosDB();
+                
+                try{
+                    usuarioUneEvento.inscribirEvento(eventoAUnir, usuarioEvento);
+                } catch (SQLException ex){
+                    ex.printStackTrace();
+                }
+                
+                
+                
         }
 
-        Cookie ck = new Cookie("user", "sonoo jaiswal");//creating cookie object  
+        /*Cookie ck = new Cookie("user", "sonoo jaiswal");//creating cookie object  
         response.addCookie(ck);//adding cookie in the response  
 
         request.setAttribute("user", u_nuevo);
         RequestDispatcher rd = request.getRequestDispatcher("register.jsp"); //
-        rd.forward(request, response);
+        rd.forward(request, response); */
 
     }
 
