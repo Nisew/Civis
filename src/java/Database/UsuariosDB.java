@@ -55,10 +55,11 @@ public class UsuariosDB {
     }
     
     //Metodo para iniciar sesion
-    public Usuario inicioSesion(String user, String pass) throws SQLException {
+    public boolean inicioSesion(String user, String pass) throws SQLException {
         Usuario usuarioLogin = new Usuario();
         
         con = ConnectionDB.conexion();
+        boolean logueado = false;
         
         ps = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
         ps.setString(1, user);
@@ -67,6 +68,7 @@ public class UsuariosDB {
         
         if (rs.first()) {
             if (pass.equals(rs.getString("contrasenya"))) {                
+               /* 
                 usuarioLogin.setUsuario(rs.getString("usuario"));
                 usuarioLogin.setContrasenya(rs.getString("contrasenya"));
                 usuarioLogin.setNombre(rs.getString("nombre"));
@@ -74,6 +76,9 @@ public class UsuariosDB {
                 usuarioLogin.setFechaNacimiento(rs.getString("fecha_nacimiento"));
                 usuarioLogin.setTelefono(rs.getString("telefono"));
                 usuarioLogin.setCorreo(rs.getString("correo"));
+                */
+                
+                logueado = true;
             }
             //ERROR - CONTRASEÑA NO CORRECTA
         }

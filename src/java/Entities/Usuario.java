@@ -21,8 +21,11 @@ public class Usuario {
     private String telefono;
     private String correo;
     
-    public Usuario (){
-        
+    public Usuario (){    
+    }
+    
+    public Usuario (String pUsuario){  
+        this.usuario = pUsuario;
     }
     
     public Usuario (String pUsuario, String pContrasenya){
