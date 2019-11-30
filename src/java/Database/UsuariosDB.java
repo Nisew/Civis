@@ -15,6 +15,7 @@ public class UsuariosDB {
  
     Connection con;
     
+    
     //Metodo para registrarse
     public boolean crearUsuario(Usuario u) throws SQLException {
     
@@ -55,7 +56,7 @@ public class UsuariosDB {
         con = ConnectionDB.conexion();
         boolean logueado = false;
         
-        String sql = "SELECT usuario WHERE usuario = ?";
+        String sql = "SELECT usuario FROM usuarios WHERE usuario = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, u.getUsuario());
         
@@ -83,7 +84,7 @@ public class UsuariosDB {
         
         ArrayList<Evento> eventos = new ArrayList<>();
         
-        String sql = "SELECT evento WHERE id_usuario = ? ";
+        String sql = "SELECT evento FROM eventos WHERE id_usuario = ? ";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, u.getId_usuario());
         
@@ -111,7 +112,8 @@ public class UsuariosDB {
     
     //Metodo para inscribirse en un evento
     public void inscribirEvento(Evento e,Usuario u) throws SQLException {
-    
+        con = ConnectionDB.conexion();
+        
         String sql = "insert into ayudantes(id_usuario,id_evento) values(?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, u.getId_usuario());
@@ -152,7 +154,7 @@ public class UsuariosDB {
     }
     
     //Metodo para mostrar perfil de un usuario
-    public void verUsuario(Usuario u) throws SQLException {
+    /*public void verUsuario(Usuario u) throws SQLException {
         con = ConnectionDB.conexion();
         
         PreparedStatement ps = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
@@ -172,7 +174,7 @@ public class UsuariosDB {
         }
         System.out.println("" + u);
     }
-    
+    */
     
     
    // El main es un ejemplo de registro 
@@ -193,17 +195,29 @@ public class UsuariosDB {
     */
     
     //Ejemplo de inicio de sesion
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Usuario usuario = new Usuario("Anthony69", "1234");
         
         UsuariosDB udb = new UsuariosDB();
-        boolean logueado = false;
+        boolean logueado= false;
         try {
             logueado = udb.iniciarSesion(usuario);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-    }
+    }*/
      
+    //Test inscribir evento
+    public static void main(String[] args){
+        Usuario user = new Usuario(1, "Anthony69");
+        Evento event = new Evento(3, "Dar de comer a perros");
+        
+        UsuariosDB udb = new UsuariosDB();
+        try {
+        udb.inscribirEvento(event, user);
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
 }

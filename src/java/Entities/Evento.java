@@ -21,6 +21,15 @@ public class Evento {
 
     public Evento () {   
     }
+    
+    public Evento (String pTitulo) {
+        this.titulo = pTitulo;
+    }
+    
+    public Evento (int pId, String pTitulo){
+        this.id_evento = pId;
+        this.titulo = pTitulo;
+    }
 
     public Evento(String titulo, String ubicacion, String hora_evento, String fecha_evento, String descripcion, int num_ayudante) {
         this.titulo = titulo;

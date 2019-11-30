@@ -67,7 +67,7 @@ public class ServletUsuario extends HttpServlet {
         rd.forward(request, response);
          */
         //Login
-        String usuario = request.getParameter("nombreUsuario");
+        /*String usuario = request.getParameter("nombreUsuario");
         String contrasenya = request.getParameter("contrasenya");
 
         boolean logueado = false;
@@ -87,7 +87,7 @@ public class ServletUsuario extends HttpServlet {
             request.setAttribute("user", u_login);
             RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
             rd.forward(request, response);
-        }
+        } */
 
     }
 

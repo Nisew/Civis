@@ -71,7 +71,7 @@ public class EventosDB {
         return eventos;
     }
     
-   
+    //Mostrar eventos escritos test
     public static void main(String[] args) {
         
         EventosDB b1 = new EventosDB();
