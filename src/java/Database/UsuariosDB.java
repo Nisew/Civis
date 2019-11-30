@@ -84,7 +84,7 @@ public class UsuariosDB {
         }
         ps.close();
         con.close();
-        return usuarioLogin;
+        return logueado;
     }
     
     //Metodo para mostrar perfil de un usuario
