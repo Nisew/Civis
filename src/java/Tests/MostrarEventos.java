@@ -1,16 +1,14 @@
 package Tests;
 
 import Database.EventosDB;
-import Entities.Usuario;
 import java.sql.SQLException;
 
-public class VerEstadoInscripcion {
+public class MostrarEventos {
     public static void main(String[] args) {
-        Usuario usuario1 = new Usuario(1, "Fresita98", "1234", "Manolo", "Garcia", "1999-01-01", "111111111", "f@gmail.com");
         
         EventosDB eventDB = new EventosDB();
         try {
-            System.out.println(eventDB.verEstadoInscripcion(usuario1));
+            System.out.println(eventDB.mostrarEventos());
         } catch (SQLException ex) {
             ex.printStackTrace();
         }    

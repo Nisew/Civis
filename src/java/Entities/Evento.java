@@ -4,10 +4,9 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-
-
 public class Evento {
-    
+
+    //Atributos
     private int id_evento;
     private String titulo;
     private String ubicacion;
@@ -21,31 +20,9 @@ public class Evento {
     private boolean confirmado;
     private int id_creador;
 
-    public Evento () {
-        
-    }
-    
-    public Evento (String pTitulo) {
-        this.titulo = pTitulo;
-    }
-    
-    public Evento (int pId, String pTitulo){
-        this.id_evento = pId;
-        this.titulo = pTitulo;
-    }
+    //Constructores
+    public Evento() {}
 
-    public Evento(String titulo, String ubicacion, String hora_evento, String fecha_evento, String descripcion, int num_ayudante) {
-        this.titulo = titulo;
-        this.ubicacion = ubicacion;
-        this.hora_registro = horaActual();
-        this.fecha_registro= fechaActual();
-        this.hora_evento = hora_evento;
-        this.fecha_evento = fecha_evento;
-        this.descripcion = descripcion;
-        this.num_ayudante = num_ayudante;
-        this.id_creador = 1;
-    }
-    
     public Evento(int id_evento, String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, int id_creador) {
         this.id_evento = id_evento;
         this.titulo = titulo;
@@ -58,7 +35,8 @@ public class Evento {
         this.num_ayudante = num_ayudante;
         this.id_creador = id_creador;
     }
-    public Evento(String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, int id_creador) {
+
+    public Evento(String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, boolean aceptado, boolean confirmado, int id_creador) {
         this.titulo = titulo;
         this.ubicacion = ubicacion;
         this.hora_registro = hora_registro;
@@ -67,9 +45,27 @@ public class Evento {
         this.fecha_evento = fecha_evento;
         this.descripcion = descripcion;
         this.num_ayudante = num_ayudante;
+        this.aceptado = aceptado;
+        this.confirmado = confirmado;
         this.id_creador = id_creador;
     }
-    
+  
+    public Evento(int id_evento, String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, boolean aceptado, boolean confirmado, int id_creador) {
+        this.id_evento = id_evento;
+        this.titulo = titulo;
+        this.ubicacion = ubicacion;
+        this.hora_registro = hora_registro;
+        this.fecha_registro = fecha_registro;
+        this.hora_evento = hora_evento;
+        this.fecha_evento = fecha_evento;
+        this.descripcion = descripcion;
+        this.num_ayudante = num_ayudante;
+        this.aceptado = aceptado;
+        this.confirmado = confirmado;
+        this.id_creador = id_creador;
+    }
+  
+    //Getter y Setter
     public int getId_evento() {
         return id_evento;
     }
@@ -98,8 +94,16 @@ public class Evento {
         return hora_registro;
     }
 
+    public void setHora_registro(String hora_registro) {
+        this.hora_registro = hora_registro;
+    }
+
     public String getFecha_registro() {
         return fecha_registro;
+    }
+
+    public void setFecha_registro(String fecha_registro) {
+        this.fecha_registro = fecha_registro;
     }
 
     public String getHora_evento() {
@@ -134,7 +138,21 @@ public class Evento {
         this.num_ayudante = num_ayudante;
     }
 
-  
+    public boolean isAceptado() {
+        return aceptado;
+    }
+
+    public void setAceptado(boolean aceptado) {
+        this.aceptado = aceptado;
+    }
+
+    public boolean isConfirmado() {
+        return confirmado;
+    }
+
+    public void setConfirmado(boolean confirmado) {
+        this.confirmado = confirmado;
+    }
 
     public int getId_creador() {
         return id_creador;
@@ -146,28 +164,21 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "Evento{" + "titulo=" + titulo + ", ubicacion=" + ubicacion + ", hora_registro=" + hora_registro + ", fecha_registro=" + fecha_registro + ", hora_evento=" + hora_evento + ", fecha_evento=" + fecha_evento + ", descripcion=" + descripcion + ", num_ayudante=" + num_ayudante + ", id_creador=" + id_creador + '}';
+        return "Evento{" + "id_evento=" + id_evento + ", titulo=" + titulo + ", ubicacion=" + ubicacion + ", hora_registro=" + hora_registro + ", fecha_registro=" + fecha_registro + ", hora_evento=" + hora_evento + ", fecha_evento=" + fecha_evento + ", descripcion=" + descripcion + ", num_ayudante=" + num_ayudante + ", aceptado=" + aceptado + ", confirmado=" + confirmado + ", id_creador=" + id_creador + '}';
     }
+    
+    //Metodos
+    public static String horaActual() {
 
-  
-    
-    public static String horaActual(){
-        
-
-    DateFormat horaFormato = new SimpleDateFormat("HH:mm:ss");
-    
-    String horaActual = horaFormato.format(new Date());
-    
-        
+        DateFormat horaFormato = new SimpleDateFormat("HH:mm:ss");
+        String horaActual = horaFormato.format(new Date());
         return horaActual;
     }
-    
 
-    public static String fechaActual(){
-       
-    DateFormat horaFormato = new SimpleDateFormat("YYYY-MM-dd");
-    String fechaActual = horaFormato.format(new Date());
-    return fechaActual;
+    public static String fechaActual() {
+
+        DateFormat horaFormato = new SimpleDateFormat("YYYY-MM-dd");
+        String fechaActual = horaFormato.format(new Date());
+        return fechaActual;
     }
-  
 }
