@@ -17,7 +17,6 @@ public class Evento {
     private String fecha_evento;
     private String descripcion;
     private int num_ayudante;
-    private boolean inscrito;
     private boolean aceptado;
     private boolean confirmado;
     private int id_creador;

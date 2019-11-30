@@ -101,21 +101,22 @@ public class UsuariosDB {
     
     //Metodo para inscribirse en un evento de otro usuario
     public void inscribirEvento(Evento e,Usuario u) throws SQLException {
-    
-        String sql = "insert into ayudantes(id_usuario,id_evento) values(?,?)";
-        PreparedStatement ps = con.prepareStatement(sql);
+        con = ConnectionDB.conexion();
+        
+        PreparedStatement ps = con.prepareStatement(
+                "INSERT INTO ayudantes (id_usuario, id_evento, aceptado, confirmado) VALUES (?, ?, 0, 0)");
         ps.setInt(1, u.getId_usuario());
         ps.setInt(2, e.getId_evento());
         
-        ps.executeQuery();
+        ps.executeUpdate();
     }
     
     //Metodo para ver el estado de la inscripcion a un evento
     public ArrayList<Evento> verEstadoInscripcion(Usuario u) throws SQLException {
-    
+        con = ConnectionDB.conexion();
+        
         ArrayList<Evento> eventos = new ArrayList<>();
-        //HACE FALTA HACER UN JOIN 
-        //ID AYUDANTE = ID EVENTO
+
         String sql = "select * from ayudantes where id_usuario = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, u.getId_usuario());
@@ -161,5 +162,6 @@ public class UsuariosDB {
             u.setCorreo(rs.getString("correo"));
         }
         System.out.println("" + u);
-    }         
+    }
+    
 }
