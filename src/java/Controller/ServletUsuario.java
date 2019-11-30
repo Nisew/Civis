@@ -48,6 +48,7 @@ public class ServletUsuario extends HttpServlet {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+                break;
             case "userLogin":
                 //Login
                 String userLogin = request.getParameter("nombreUsuario");
@@ -72,39 +73,8 @@ public class ServletUsuario extends HttpServlet {
                     RequestDispatcher rd = request.getRequestDispatcher("lognotok.jsp"); //
                     rd.forward(request, response);
                 }
-
-                
-            case "showEvents":
-                //Listar eventos Propios
-                String nombreUsuarioPropios = request.getParameter("nombreUsuario");
-                
-                
-                Usuario userEventosPropios = new Usuario(nombreUsuarioPropios);
-                UsuariosDB udbeventos = new UsuariosDB();
-                
-                try{
-                    udbeventos.listarEventosPropios(userEventosPropios);
-                } catch (SQLException ex){
-                    ex.printStackTrace();
-                }
-                
-            case "joinEvent":
-                //Unirse a evento de otro usuario
-                String userEvento = request.getParameter("nombreUsuario");
-                String eventoTitulo = request.getParameter("tituloEvento");
-                
-                Usuario usuarioEvento = new Usuario(userEvento);
-                Evento eventoAUnir = new Evento(eventoTitulo);
-                UsuariosDB usuarioUneEvento = new UsuariosDB();
-                
-                try{
-                    usuarioUneEvento.inscribirEvento(eventoAUnir, usuarioEvento);
-                } catch (SQLException ex){
-                    ex.printStackTrace();
-                }
-                
-                
-                
+                break;
+       
         }
 
         /*Cookie ck = new Cookie("user", "sonoo jaiswal");//creating cookie object  

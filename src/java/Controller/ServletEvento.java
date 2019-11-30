@@ -27,7 +27,7 @@ public class ServletEvento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String sa = request.getParameter("sa");
-        String id= request.getParameter("idUsuario");
+        String id = request.getParameter("idUsuario");
         int idUsuario = Integer.parseInt(id);
         EventosDB eventoDB = new EventosDB();
 
@@ -45,14 +45,14 @@ public class ServletEvento extends HttpServlet {
                 int np = Integer.parseInt(numPersonas);
 
                 //CREO UN OBJETO EVENTO Y EJECUTO EL METODO
-                Evento evento1 = new Evento(tituloEvento, ubicacion, hora_evento, fecha_evento, descripcion, np);
-                try {
+                //Evento evento1 = new Evento(tituloEvento, ubicacion, hora_evento, fecha_evento, descripcion, np);
+               /* try {
 
                     eventoDB.crearEvento(evento1);
 
                 } catch (SQLException ex) {
                     Logger.getLogger(ServletEvento.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                } */
 
                 //ENVIAMOS LA INFORMACION A LA SIGUIENTE PAGINA
                 request.setAttribute("user", tituloEvento);
@@ -65,12 +65,40 @@ public class ServletEvento extends HttpServlet {
                 Usuario u = new Usuario();
                 u.setId_usuario(idUsuario);
 
-                try {
+               /* try {
                     eventoDB.mostrarEventosInscritos(u);
                 } catch (SQLException ex) {
                     Logger.getLogger(ServletEvento.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                }*/
                 break;
+
+            case "showOwnEvents":
+                //Listar eventos Propios
+                String nombreUsuarioPropios = request.getParameter("nombreUsuario");
+
+                Usuario userEventosPropios = new Usuario(nombreUsuarioPropios);
+                EventosDB edbeventos = new EventosDB();
+
+                try {
+                    edbeventos.listarEventosPropios(userEventosPropios);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+            case "joinEvent":
+                //Unirse a evento de otro usuario
+                String userEvento = request.getParameter("nombreUsuario");
+                String eventoTitulo = request.getParameter("tituloEvento");
+
+                Usuario usuarioEvento = new Usuario(userEvento);
+                Evento eventoAUnir = new Evento(eventoTitulo);
+                EventosDB usuarioUneEvento = new EventosDB();
+
+                try {
+                    usuarioUneEvento.inscribirEvento(eventoAUnir, usuarioEvento);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
         }
 
     }

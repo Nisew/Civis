@@ -44,7 +44,7 @@
                 <div id="form-main">
                     <div id="form-div">
 
-                        <form class="form" id="formRegister" action="newUsuario" method="post">
+                        <form class="form" id="formRegister" action="usuario?sa=newUsuario" method="post">
 
                             <p class="nombreUsuario">
 
