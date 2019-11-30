@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import Database.UsuariosDB;
@@ -21,28 +16,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Usuario
- */
 @WebServlet(name = "ServletUsuario", urlPatterns = {"/usuario"})
 public class ServletUsuario extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
 
         //Registro de usuario nuevo        
-        /* String usuario = request.getParameter("nombreUsuario");
+        String usuario = request.getParameter("nombreUsuario");
         String psswrd = request.getParameter("contrasenya");
         String nombre = request.getParameter("nombre");
         String apellidos = request.getParameter("apellidos");
@@ -54,7 +37,7 @@ public class ServletUsuario extends HttpServlet {
 
         try {
             UsuariosDB nuevousuario = new UsuariosDB();
-            nuevousuario.crearUsuario(u_nuevo);
+            nuevousuario.registroUsuario(u_nuevo);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -65,9 +48,9 @@ public class ServletUsuario extends HttpServlet {
         request.setAttribute("user", u_nuevo);
         RequestDispatcher rd = request.getRequestDispatcher("register.jsp"); //
         rd.forward(request, response);
-         */
-        //Login
-        /*String usuario = request.getParameter("nombreUsuario");
+        
+        /*Login
+        String usuario = request.getParameter("nombreUsuario");
         String contrasenya = request.getParameter("contrasenya");
 
         boolean logueado = false;
@@ -87,7 +70,7 @@ public class ServletUsuario extends HttpServlet {
             request.setAttribute("user", u_login);
             RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
             rd.forward(request, response);
-        } */
+        }*/
 
     }
 

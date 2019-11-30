@@ -36,20 +36,20 @@ public class ServletEvento extends HttpServlet {
         
         int np =  Integer.parseInt(numPersonas);
      
-        Evento evento1 = new Evento(tituloEvento, ubicacion, hora_evento, fecha_evento, descripcion, np);
+        //Evento evento1 = new Evento(tituloEvento, ubicacion, hora_evento, fecha_evento, descripcion, np);
         
      
-        try {
+        
             EventosDB eventoDB = new EventosDB();
-            if(eventoDB.crearEvento(evento1)){
+            //if(eventoDB.crearEvento(evento1)){
                
-            }
+            
             
           
             
-        } catch (SQLException ex) {
+      /*  } catch (SQLException ex) {
             Logger.getLogger(ServletEvento.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } */
          
 
         request.setAttribute("user", tituloEvento);

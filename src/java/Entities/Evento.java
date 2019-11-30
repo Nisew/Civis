@@ -17,9 +17,13 @@ public class Evento {
     private String fecha_evento;
     private String descripcion;
     private int num_ayudante;
+    private boolean inscrito;
+    private boolean aceptado;
+    private boolean confirmado;
     private int id_creador;
 
-    public Evento () {   
+    public Evento () {
+        
     }
     
     public Evento (String pTitulo) {
@@ -59,10 +63,18 @@ public class Evento {
         this.num_ayudante = num_ayudante;
         this.id_creador = id_creador;
     }
-
-
-
-
+    public Evento(String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, int id_creador) {
+        this.titulo = titulo;
+        this.ubicacion = ubicacion;
+        this.hora_registro = hora_registro;
+        this.fecha_registro = fecha_registro;
+        this.hora_evento = hora_evento;
+        this.fecha_evento = fecha_evento;
+        this.descripcion = descripcion;
+        this.num_ayudante = num_ayudante;
+        this.id_creador = id_creador;
+    }
+    
     public int getId_evento() {
         return id_evento;
     }
