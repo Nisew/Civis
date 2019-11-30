@@ -10,12 +10,13 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+
 public class UsuariosDB {
  
     Connection con;
     
     //Metodo para registrarse
-    public boolean crearUsuario(Usuario u) throws SQLException {
+    public void registroUsuario(Usuario u) throws SQLException {
     
         boolean existe = false;
         con = ConnectionDB.conexion();
@@ -45,38 +46,34 @@ public class UsuariosDB {
         
             ps1.executeUpdate();
         }
-        return existe;
     }
     
     //Metodo para iniciar sesion
-    public boolean iniciarSesion(Usuario u) throws SQLException {
+    public Usuario inicioSesion(String user, String pass) throws SQLException {
+        Usuario usuarioLogin = new Usuario();
+        con = ConnectionDB.conexion();
         
-        boolean logueado = false;
-        
-        String sql = "SELECT usuario WHERE usuario = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, u.getUsuario());
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
+        ps.setString(1, user);
         
         ResultSet rs = ps.executeQuery();
         
-        if (rs.next()) {
-            if (u.getContrasenya().equals(rs.getString("contrasenya"))) {
-                
-                u.setUsuario(rs.getString("usuario"));
-                u.setContrasenya(rs.getString("contrasenya"));
-                u.setNombre(rs.getString("nombre"));
-                u.setApellidos(rs.getString("apellidos"));
-                u.setFechaNacimiento(rs.getString("fecha_nacimiento"));
-                u.setTelefono(rs.getString("telefono"));
-                u.setCorreo(rs.getString("correo"));
-                
-                logueado = true;
+        if (rs.first()) {
+            if (pass.equals(rs.getString("contrasenya"))) {                
+                usuarioLogin.setUsuario(rs.getString("usuario"));
+                usuarioLogin.setContrasenya(rs.getString("contrasenya"));
+                usuarioLogin.setNombre(rs.getString("nombre"));
+                usuarioLogin.setApellidos(rs.getString("apellidos"));
+                usuarioLogin.setFechaNacimiento(rs.getString("fecha_nacimiento"));
+                usuarioLogin.setTelefono(rs.getString("telefono"));
+                usuarioLogin.setCorreo(rs.getString("correo"));
             }
+            //ERROR - CONTRASEÑA NO CORRECTA
         }
-        return logueado;
+        return usuarioLogin;
     }
     
-    //Metodo para listar todos los eventos por nombre de usuario
+    //Metodo para listar todos los eventos de un usuario
     public ArrayList<Evento> listarEventosPropios(Usuario u) throws SQLException {
         
         ArrayList<Evento> eventos = new ArrayList<>();
@@ -84,8 +81,7 @@ public class UsuariosDB {
         PreparedStatement ps = con.prepareStatement("SELECT * FROM eventos e JOIN usuarios u ON e.id_creador = ?");
         ps.setInt(1, u.getId_usuario());
         
-        ResultSet rs = ps.executeQuery();
-        
+        ResultSet rs = ps.executeQuery();        
         
         while (rs.next()) {
             eventos.add(new Evento(
@@ -100,15 +96,10 @@ public class UsuariosDB {
                     rs.getInt("num_ayudante"),
                     rs.getInt("id_creador")));
         }
-        for(int i = 0; i < eventos.size(); i++)
-        {
-            System.out.println(eventos.get(i).toString());
-        }
-        return eventos;
-        
+        return eventos;        
     }  
     
-    //Metodo para inscribirse en un evento
+    //Metodo para inscribirse en un evento de otro usuario
     public void inscribirEvento(Evento e,Usuario u) throws SQLException {
     
         String sql = "insert into ayudantes(id_usuario,id_evento) values(?,?)";
@@ -170,23 +161,5 @@ public class UsuariosDB {
             u.setCorreo(rs.getString("correo"));
         }
         System.out.println("" + u);
-    }
-
-    /* public static void main(String[] args) {
-       
-        Usuario user = new Usuario();
-        user.setUsuario("Anthony69");
-        
-        UsuariosDB us = new UsuariosDB();
-        
-        try {
-            us.verUsuario(user);
-            us.listarEventosPropios(user);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } 
-    }*/
-    
-    
-     
+    }         
 }

@@ -24,6 +24,11 @@ public class Usuario {
     public Usuario (){
         
     }
+    
+    public Usuario (String pUsuario, String pContrasenya){
+        this.usuario=pUsuario;
+        this.contrasenya = pContrasenya;
+    }
 
     public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, String fechaNacimiento, String telefono, String correo) {
         this.id_usuario = id_usuario;
