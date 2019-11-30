@@ -34,10 +34,6 @@ public class Evento {
         this.id_creador = 1;
     }
     
-    
-    
-    
-
     public Evento(int id_evento, String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, int id_creador) {
         this.id_evento = id_evento;
         this.titulo = titulo;
