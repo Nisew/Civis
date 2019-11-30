@@ -12,17 +12,27 @@ import java.sql.Date;
  * @author Usuario
  */
 public class Usuario {
-    int id_usuario;
-    String usuario;
-    String contrasenya;
-    String nombre;
-    String apellidos;
-    String fechaNacimiento;
-    String telefono;
-    String correo;
+    private int id_usuario;
+    private String usuario;
+    private String contrasenya;
+    private String nombre;
+    private String apellidos;
+    private String fechaNacimiento;
+    private String telefono;
+    private String correo;
     
     public Usuario (){
         
+    }
+    
+    public Usuario (String pUsuario, String pContrasenya){
+        this.usuario=pUsuario;
+        this.contrasenya = pContrasenya;
+    }
+    
+    public Usuario (int pId, String pUsuario){
+        this.id_usuario = pId;
+        this.usuario = pUsuario;
     }
 
     public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, String fechaNacimiento, String telefono, String correo) {

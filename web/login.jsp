@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,7 +25,7 @@
               <li><a href="./necesitoAyuda.html">Necesito Ayuda</a></li>
               <li><a href="./misInscripciones.html">Mis inscripciones</a></li>
               <li><a href="./misEventos.html">Mis eventos</a></li>
-              <li><a href="./login.html">Login</a></li>
+              <li><a href="./login.jsp">Login</a></li>
             </ul>
           </div>
         </nav>
@@ -33,7 +34,7 @@
     </div>
     <!-- Final NavBar -->
 
-    <!-- Inicio visualización eventos -->
+    <!-- Inicio visualizaciÃ³n eventos -->
     <div class="row">
 
       <div class="col-md-3"></div>
@@ -42,14 +43,14 @@
 
         <div id="form-main">
           <div id="form-div">
-            <form class="form" id="formLogin" align:center>
+              <form class="form" id="formLogin" action="usuario" method="post" align:center>
 
               <p class="nombreUsuario">
                 <input name="nombreUsuario" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />
               </p>
 
               <p class="contra">
-                <input name="contra" type="password" class="validate[required,custom[email]] feedback-input" placeholder="Contraseña" id="contra" />
+                <input name="contrasenya" type="password" class="validate[required,custom[email]] feedback-input" placeholder="ContraseÃ±a" id="contrasenya" />
               </p>
 
               <div class="submit">
@@ -71,7 +72,7 @@
       <div class="col-md-3"></div>
 
     </div>
-    <!-- Fin visualización eventos -->
+    <!-- Fin visualizaciÃ³n eventos -->
 
   </body>
 </html>

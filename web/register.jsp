@@ -25,7 +25,7 @@
                             <li><a href="./necesitoAyuda.html">Necesito Ayuda</a></li>
                             <li><a href="./misInscripciones.html">Mis inscripciones</a></li>
                             <li><a href="./misEventos.html">Mis eventos</a></li>
-                            <li><a href="./login.html">Login</a></li>
+                            <li><a href="./login.jsp">Login</a></li>
                         </ul>
                     </div>
                 </nav>

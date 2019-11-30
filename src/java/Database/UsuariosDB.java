@@ -10,12 +10,14 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+
 public class UsuariosDB {
  
     Connection con;
     
+    
     //Metodo para registrarse
-    public boolean crearUsuario(Usuario u) throws SQLException {
+    public void registroUsuario(Usuario u) throws SQLException {
     
         boolean existe = false;
         con = ConnectionDB.conexion();
@@ -45,71 +47,63 @@ public class UsuariosDB {
         
             ps1.executeUpdate();
         }
-        return existe;
     }
     
     //Metodo para iniciar sesion
-    public boolean iniciarSesion(Usuario u) throws SQLException {
+    public Usuario inicioSesion(String user, String pass) throws SQLException {
+        Usuario usuarioLogin = new Usuario();
+        con = ConnectionDB.conexion();
         
-        boolean logueado = false;
-        
-        String sql = "SELECT usuario WHERE usuario = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, u.getUsuario());
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
+        ps.setString(1, user);
         
         ResultSet rs = ps.executeQuery();
         
-        if (rs.next()) {
-            if (u.getContrasenya().equals(rs.getString("contrasenya"))) {
-                
-                u.setUsuario(rs.getString("usuario"));
-                u.setContrasenya(rs.getString("contrasenya"));
-                u.setNombre(rs.getString("nombre"));
-                u.setApellidos(rs.getString("apellidos"));
-                u.setFechaNacimiento(rs.getString("fecha_nacimiento"));
-                u.setTelefono(rs.getString("telefono"));
-                u.setCorreo(rs.getString("correo"));
-                
-                logueado = true;
+        if (rs.first()) {
+            if (pass.equals(rs.getString("contrasenya"))) {                
+                usuarioLogin.setUsuario(rs.getString("usuario"));
+                usuarioLogin.setContrasenya(rs.getString("contrasenya"));
+                usuarioLogin.setNombre(rs.getString("nombre"));
+                usuarioLogin.setApellidos(rs.getString("apellidos"));
+                usuarioLogin.setFechaNacimiento(rs.getString("fecha_nacimiento"));
+                usuarioLogin.setTelefono(rs.getString("telefono"));
+                usuarioLogin.setCorreo(rs.getString("correo"));
             }
+            //ERROR - CONTRASEÑA NO CORRECTA
         }
-        return logueado;
+        return usuarioLogin;
     }
     
-    //Metodo para listar todos los eventos por nombre de usuario
-    public ArrayList<Evento> listarEventos(Usuario u) throws SQLException {
+    //Metodo para listar todos los eventos de un usuario
+    public ArrayList<Evento> listarEventosPropios(Usuario u) throws SQLException {
         
         ArrayList<Evento> eventos = new ArrayList<>();
         
-        String sql = "SELECT evento WHERE id_usuario = ? ";
-        PreparedStatement ps = con.prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM eventos e JOIN usuarios u ON e.id_creador = ?");
         ps.setInt(1, u.getId_usuario());
         
-        ResultSet rs = ps.executeQuery();
+        ResultSet rs = ps.executeQuery();        
         
-        
-//        while (rs.next()) {            
-//            eventos.add(new Evento(
-//                    rs.getInt("id_evento"),
-//                    rs.getString("titulo"),
-//                    rs.getString("ubicacion"),
-//                    rs.getString("hora_resgistro"),
-//                    rs.getString("fecha_registro"),
-//                    rs.getString("hora_evento"),
-//                    rs.getString("fecha_evento"),
-//                    rs.getString("descripcion"),
-//                    rs.getInt("num_ayudante"),
-//                    rs.getBoolean("inscrito"),
-//                    rs.getBoolean("aceptado"),
-//                    rs.getBoolean("confirmado"),
-//                    rs.getInt("id_creador")));
-//        }
-        return eventos;
+        while (rs.next()) {
+            eventos.add(new Evento(
+                    rs.getInt("id_evento"),
+                    rs.getString("titulo"),
+                    rs.getString("ubicacion"),
+                    rs.getString("hora_registro"),
+                    rs.getString("fecha_registro"),
+                    rs.getString("hora_evento"),
+                    rs.getString("fecha_evento"),
+                    rs.getString("descripcion"),
+                    rs.getInt("num_ayudante"),
+                    rs.getInt("id_creador")));
+        }
+        return eventos;        
     }  
     
-    //Metodo para inscribirse en un evento
+    //Metodo para inscribirse en un evento de otro usuario
     public void inscribirEvento(Evento e,Usuario u) throws SQLException {
-    
+        con = ConnectionDB.conexion();
+        
         String sql = "insert into ayudantes(id_usuario,id_evento) values(?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, u.getId_usuario());
@@ -150,49 +144,24 @@ public class UsuariosDB {
     }
     
     //Metodo para mostrar perfil de un usuario
-    public void verUsuario(Usuario u) throws SQLException {
+    /*public void verUsuario(Usuario u) throws SQLException {
+        con = ConnectionDB.conexion();
         
-        String sql = "SELECT * FROM usuarios WHERE id_usuario = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, u.getId_usuario());
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM usuarios WHERE usuario = ?");
+        ps.setString(1, u.getUsuario());
         
         ResultSet rs = ps.executeQuery();
         
         while(rs.next()) {
-            rs.getInt("id_usuario");
-            rs.getString("usuario");
-            rs.getString("contrasenya");
-            rs.getString("nombre");
-            rs.getString("apellidos");
-            rs.getDate("fecha_nacimiento");
-            rs.getInt("telefono");
-            rs.getString("correo");
-        }        
-    }
-    
-    
-    
-   // El main es un ejemplo de como ejecutar 
-    /*
-    public static void main(String[] args) {
-       
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
-        java.util.Date d = Date.valueOf("1993-05-18");
-        java.sql.Date fecha = new java.sql.Date(d.getTime());
-        Usuario usuario = new Usuario ("Mortadelo2", "4321", "Juan", "Magan", fecha, "971971971", "jm@gmail.com");
-        
-        UsuariosDB us = new UsuariosDB();
-        
-        try {
-            if(us.crearUsuario(usuario)){
-                System.out.println("se creo");
-            }else
-                System.out.println("valiste");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } 
-    } */
-    
-    //
-     
+            u.setId_usuario(rs.getInt("id_usuario"));
+            u.setUsuario(rs.getString("usuario"));
+            u.setContrasenya(rs.getString("contrasenya"));
+            u.setNombre(rs.getString("nombre"));
+            u.setApellidos(rs.getString("apellidos"));
+            u.setFechaNacimiento(rs.getString("fecha_nacimiento"));
+            u.setTelefono(rs.getString("telefono"));
+            u.setCorreo(rs.getString("correo"));
+        }
+        System.out.println("" + u);
+    }         */
 }
