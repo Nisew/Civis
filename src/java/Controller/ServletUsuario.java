@@ -45,10 +45,13 @@ public class ServletUsuario extends HttpServlet {
                 try {
                     UsuariosDB nuevousuario = new UsuariosDB();
                     nuevousuario.registroUsuario(u_nuevo);
+                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                    rd.forward(request, response);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
                 break;
+                
             case "userLogin":
                 //Login
                 String userLogin = request.getParameter("nombreUsuario");
@@ -66,7 +69,7 @@ public class ServletUsuario extends HttpServlet {
                 
                 if(logueado){
                     request.setAttribute("user", userLogin);
-                    RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //
                     rd.forward(request, response);
                 } else {
                     request.setAttribute("user", userLogin);

@@ -6,6 +6,7 @@ import Entities.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -60,16 +61,20 @@ public class ServletEvento extends HttpServlet {
                 rd.forward(request, response);
                 break;
 
-            case "listEvent":
+            case "listEvents":
                 //LISTAMOS LOS EVENTOS
-                Usuario u = new Usuario();
-                u.setId_usuario(idUsuario);
+                EventosDB listareventos = new EventosDB();
+                ArrayList<Evento> listaEventos = new ArrayList<>();
 
-               /* try {
-                    eventoDB.mostrarEventosInscritos(u);
+                try {
+                    listaEventos = listareventos.mostrarEventos();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ServletEvento.class.getName()).log(Level.SEVERE, null, ex);
-                }*/
+                    ex.printStackTrace();
+                }
+                request.setAttribute("listaEventos", listaEventos);
+                rd = request.getRequestDispatcher("index.jsp"); //
+                rd.forward(request, response);
+                
                 break;
 
             case "showOwnEvents":

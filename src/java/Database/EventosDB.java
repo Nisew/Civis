@@ -67,8 +67,8 @@ public class EventosDB {
                     rs.getInt("id_creador")));
         }
         ps.close();
-        con.close();
-        System.out.println(eventos);
+        
+        
         return eventos;
     }
 
@@ -106,6 +106,7 @@ public class EventosDB {
         }
         ps.close();
         con.close();
+        System.out.println(eventos);
         return eventos;
     }
 
