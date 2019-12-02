@@ -57,15 +57,15 @@
 }
 
 /* Icons ---------------------------------- */
-#titulo{
-	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+#titulo, #nombreUsuario{
+	background-image: url(../img/usuario.png);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
-#titulo:focus{
-	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+#titulo:focus, nombreUsuario:focus{
+	background-image: url(../img/usuario.png);
 	background-size: 30px 30px;
 	background-position: 8px 5px;
   background-position: 11px 8px;
@@ -73,63 +73,134 @@
 }
 
 #localidad{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-image: url(../img/localidad.png);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
 #localidad:focus{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-image: url(../img/localidad.png);
 	background-size: 30px 30px;
   background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
-#fecha{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+#fecha, #fechaNacimiento{
+	background-image: url(../img/date.png);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
-#fecha:focus{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+#fecha:focus, #fechaNacimiento:focus{
+	background-image: url(../img/date.png);
 	background-size: 30px 30px;
   background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
 #hora{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-image: url(../img/time.png);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
 #hora:focus{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-image: url(../img/time.png);
 	background-size: 30px 30px;
   background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
+#correo{
+	background-image: url(../img/email.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#correo:focus{
+	background-image: url(../img/email.png);
+	background-size: 30px 30px;
+  background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+
 #numPersonas{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-image: url(../img/users.png);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
 #numPersonas:focus{
-	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-image: url(../img/users.png);
 	background-size: 30px 30px;
   background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
+#login{
+	background-image: url(../img/iniciar-sesion.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#login:focus{
+	background-image: url(../img/iniciar-sesion.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#contra{
+	background-image: url(../img/contrasena.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#contra:focus{
+	background-image: url(../img/contrasena.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#nombre, #apellidos{
+	background-image: url(../img/pencil.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#nombre:focus, #apellidos:focus{
+	background-image: url(../img/pencil.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#logout{
+	background-image: url(../img/cerrar-sesion.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#logout:focus{
+	background-image: url(../img/cerrar-sesion.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
 #descripcion{
-	background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+	background-image: url(../img/editar.png);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;

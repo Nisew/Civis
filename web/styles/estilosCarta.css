@@ -241,7 +241,7 @@
 }
 
 .btn-accept {
-  margin-top: 0px;
+  margin-top: -5px;
   color: white;
   background-color: #54F449;
   margin-left: 10px;
@@ -250,7 +250,7 @@
 }
 
 .btn-discard {
-  margin-top: 0px;
+  margin-top: -5px;
   color: white;
   background-color: #F82020;
   margin-left: 10px;
