@@ -58,8 +58,9 @@ public class Ayudante {
 
     @Override
     public String toString() {
-        return "El ayudante con " + "id_usuario: " + id_usuario 
-                + " esta en el id_evento: " + id_evento + ", aceptado: " + aceptado 
-                +  "y confirmado: " + confirmado;
+        return "El ayudante con id usuario: " + id_usuario 
+                + " esta en el id evento: " + id_evento 
+                + ", aceptado: " + aceptado 
+                +  "y confirmado: " + confirmado + "\n";
     }  
 }
