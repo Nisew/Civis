@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles/estilosNavBar.css">
     <link rel="stylesheet" href="./styles/estilosCarta.css">
     <link rel="stylesheet" href="./styles/estilosFormEvento.css">
+    <link rel="stylesheet" href="./styles/estilosFormLogin.css">
   </head>
   <body>
 
@@ -25,6 +26,8 @@
               <li><a href="./misInscripciones.html">Mis inscripciones</a></li>
               <li><a href="./misEventos.html">Mis eventos</a></li>
               <li><a href="./login.html">Login</a></li>
+              <!-- <br><br>
+              <li>Hola, Alejandro, bienvenido de nuevo</li> -->
             </ul>
           </div>
         </nav>
@@ -45,19 +48,19 @@
             <form class="form" id="formRegister">
 
               <p class="nombreUsuario">
-                <input name="nombreUsuario" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />
+                <input name="nombreUsuario" type="text" class="feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />
               </p>
 
               <p class="nombre">
-                <input name="nombre" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Nombre" id="nombre" />
+                <input name="nombre" type="text" class="feedback-input" placeholder="Nombre" id="nombre" />
               </p>
 
               <p class="apellidos">
-                <input name="apellidos" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Apellidos" id="apellidos" />
+                <input name="apellidos" type="text" class="feedback-input" placeholder="Apellidos" id="apellidos" />
               </p>
 
               <p class="fechaNacimiento">
-                <input name="fechaNacimiento" type="date" class="validate[required,custom[email]] feedback-input" placeholder="Fecha Nacimiento" id="fechaNacimiento" />
+                <input name="fechaNacimiento" type="date" class="feedback-input" placeholder="Fecha Nacimiento" id="fechaNacimiento" />
               </p>
 
               <p class="correo">
@@ -65,11 +68,11 @@
               </p>
 
               <p class="contra">
-                <input name="contra" type="password" class="validate[required,custom[email]] feedback-input" placeholder="Contraseña" id="contra" />
+                <input name="contra" type="password" class="feedback-input" placeholder="Contraseña" id="contra" />
               </p>
 
               <p class="repiteContra">
-                <input name="repiteContra" type="password" class="validate[required,custom[email]] feedback-input" placeholder="Repetir Contraseña" id="repiteContra" />
+                <input name="repiteContra" type="password" class="feedback-input" placeholder="Repetir Contraseña" id="contra" />
               </p>
 
 
