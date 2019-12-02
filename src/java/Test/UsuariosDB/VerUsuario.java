@@ -1,14 +1,14 @@
-package Tests;
+package Test.UsuariosDB;
 
-import Database.EventosDB;
+import Database.UsuariosDB;
 import java.sql.SQLException;
 
-public class MostrarEventos {
+public class VerUsuario {
     public static void main(String[] args) {
         
-        EventosDB eventDB = new EventosDB();
+        UsuariosDB usuaDB = new UsuariosDB();
         try {
-            System.out.println(eventDB.mostrarEventos());
+            System.out.println(usuaDB.verUsuario("Anthony69"));
         } catch (SQLException ex) {
             ex.printStackTrace();
         }    

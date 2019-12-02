@@ -1,4 +1,4 @@
-package Tests;
+package Test.EventosDB;
 
 import Database.EventosDB;
 import Entities.Evento;
