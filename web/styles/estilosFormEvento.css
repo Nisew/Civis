@@ -128,6 +128,19 @@
 	background-repeat: no-repeat;
 }
 
+#telefono{
+	background-image: url(../img/telefono.png);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#telefono:focus{
+	background-image: url(../img/telefono.png);
+	background-size: 30px 30px;
+  background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
 
 #numPersonas{
 	background-image: url(../img/users.png);
@@ -157,14 +170,14 @@
 	background-repeat: no-repeat;
 }
 
-#contra{
+#contrasenya{
 	background-image: url(../img/contrasena.png);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
-#contra:focus{
+#contrasenya:focus{
 	background-image: url(../img/contrasena.png);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
@@ -231,9 +244,9 @@ input:focus, textarea:focus {
 	padding-bottom:22px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-  margin-top:-4px;
-  font-weight:700;
+        transition: all 0.3s;
+          margin-top:-4px;
+          font-weight:700;
 }
 
 #button-blue:hover{
