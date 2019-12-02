@@ -1,6 +1,8 @@
 package Controller;
 
+import Database.AyudantesDB;
 import Database.EventosDB;
+import Entities.Ayudante;
 import Entities.Evento;
 import Entities.Usuario;
 import java.io.IOException;
@@ -92,15 +94,14 @@ public class ServletEvento extends HttpServlet {
 
             case "joinEvent":
                 //Unirse a evento de otro usuario
-                String userEvento = request.getParameter("nombreUsuario");
-                String eventoTitulo = request.getParameter("tituloEvento");
+                int userEvento = request.getParameter("nombreUsuario");
+                int eventoTitulo = request.getParameter("tituloEvento");
 
-                Usuario usuarioEvento = new Usuario(userEvento);
-                Evento eventoAUnir = new Evento(eventoTitulo);
-                EventosDB usuarioUneEvento = new EventosDB();
+                Ayudante ayudante = new Ayudante(userEvento, eventoTitulo);
+                AyudantesDB usuarioUneEvento = new AyudantesDB();
 
                 try {
-                    usuarioUneEvento.inscribirEvento(eventoAUnir, usuarioEvento);
+                    usuarioUneEvento.inscribirAyudante(eventoAUnir);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

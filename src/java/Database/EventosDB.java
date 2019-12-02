@@ -34,28 +34,13 @@ public class EventosDB {
         ps.setDate(6, Date.valueOf(e.getFecha_evento()));
         ps.setString(7, e.getDescripcion());
         ps.setInt(8, e.getNum_ayudante());
-        ps.setInt(9, 1);
+        ps.setInt(9, e.getId_creador());
 
         existe = true;
         ps.executeUpdate();
         ps.close();
         con.close();
         return existe;
-    }
-
-    //Metodo para inscribirse en un evento de otro usuario
-    public void inscribirEvento(Evento e, Usuario u) throws SQLException {
-        con = ConnectionDB.conexion();
-
-        ps = con.prepareStatement(
-                "INSERT INTO ayudantes (id_usuario, id_evento, aceptado, confirmado) VALUES (?, ?, 0, 0)");
-        ps.setInt(1, u.getId_usuario());
-        ps.setInt(2, e.getId_evento());
-
-        ps.executeUpdate();
-
-        ps.close();
-        con.close();
     }
 
     //Metodo para ver todos los eventos
@@ -130,7 +115,7 @@ public class EventosDB {
 
         ArrayList<Evento> eventos = new ArrayList<>();
 
-        ps = con.prepareStatement("SELECT * FROM eventos e JOIN usuarios u ON e.id_creador = ?");
+        ps = con.prepareStatement("SELECT * FROM eventos id_creador = ?");
         ps.setInt(1, u.getId_usuario());
 
         ResultSet rs = ps.executeQuery();

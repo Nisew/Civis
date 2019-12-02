@@ -24,7 +24,7 @@ public class Ayudante {
     }
 
     //Getter y Setter
-    public boolean isConfirmado() {
+    public boolean getConfirmado() {
         return confirmado;
     }
 
@@ -48,7 +48,7 @@ public class Ayudante {
         this.id_evento = id_evento;
     }
 
-    public boolean isAceptado() {
+    public boolean getAceptado() {
         return aceptado;
     }
 

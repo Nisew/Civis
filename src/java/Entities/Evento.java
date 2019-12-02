@@ -26,8 +26,24 @@ public class Evento {
     public Evento (String pTitulo){
         this.titulo = pTitulo;
     }
+    
+    public Evento(String titulo, String ubicacion, 
+            String hora_registro, String fecha_registro, String hora_evento, 
+            String fecha_evento, String descripcion, int num_ayudante, int id_creador) {
+        this.titulo = titulo;
+        this.ubicacion = ubicacion;
+        this.hora_registro = hora_registro;
+        this.fecha_registro = fecha_registro;
+        this.hora_evento = hora_evento;
+        this.fecha_evento = fecha_evento;
+        this.descripcion = descripcion;
+        this.num_ayudante = num_ayudante;
+        this.id_creador = id_creador;
+    }
 
-    public Evento(int id_evento, String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, int id_creador) {
+    public Evento(int id_evento, String titulo, String ubicacion, 
+            String hora_registro, String fecha_registro, String hora_evento, 
+            String fecha_evento, String descripcion, int num_ayudante, int id_creador) {
         this.id_evento = id_evento;
         this.titulo = titulo;
         this.ubicacion = ubicacion;
@@ -40,7 +56,10 @@ public class Evento {
         this.id_creador = id_creador;
     }
 
-    public Evento(String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, boolean aceptado, boolean confirmado, int id_creador) {
+    public Evento(String titulo, String ubicacion, 
+            String hora_registro, String fecha_registro, String hora_evento, 
+            String fecha_evento, String descripcion, int num_ayudante, 
+            boolean aceptado, boolean confirmado, int id_creador) {
         this.titulo = titulo;
         this.ubicacion = ubicacion;
         this.hora_registro = hora_registro;
@@ -54,7 +73,10 @@ public class Evento {
         this.id_creador = id_creador;
     }
   
-    public Evento(int id_evento, String titulo, String ubicacion, String hora_registro, String fecha_registro, String hora_evento, String fecha_evento, String descripcion, int num_ayudante, boolean aceptado, boolean confirmado, int id_creador) {
+    public Evento(int id_evento, String titulo, String ubicacion, 
+            String hora_registro, String fecha_registro, String hora_evento, 
+            String fecha_evento, String descripcion, int num_ayudante, 
+            boolean aceptado, boolean confirmado, int id_creador) {
         this.id_evento = id_evento;
         this.titulo = titulo;
         this.ubicacion = ubicacion;
