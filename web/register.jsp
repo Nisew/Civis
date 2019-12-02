@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="./styles/estilosNavBar.css">
         <link rel="stylesheet" href="./styles/estilosCarta.css">
         <link rel="stylesheet" href="./styles/estilosFormEvento.css">
+        <link rel="stylesheet" href="./styles/estilosFormLogin.css">
     </head>
     <body>
 
@@ -48,31 +49,31 @@
 
                             <p class="nombreUsuario">
 
-                                <input name="nombreUsuario" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />
+                                <input name="nombreUsuario" type="text" class="feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />
                             </p>
 
                             <p class="nombre">
-                                <input name="nombre" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Nombre" id="nombre" />
+                                <input name="nombre" type="text" class="feedback-input" placeholder="Nombre" id="nombre" />
                             </p>
 
                             <p class="apellidos">
-                                <input name="apellidos" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Apellidos" id="apellidos" />
+                                <input name="apellidos" type="text" class="feedback-input" placeholder="Apellidos" id="apellidos" />
                             </p>
                             <p class="telefono">
-                                <input name="telefono" type="text" class="validate[required,custom[email]] feedback-input" placeholder="N&uacute;mero de telefono" id="telefono" />
+                                <input name="telefono" type="text" class="feedback-input" placeholder="N&uacute;mero de telefono" id="telefono" />
                             </p>
 
                             <p class="fechaNacimiento">
-                                <input name="fechaNacimiento" type="date" class="validate[required,custom[email]] feedback-input" placeholder="Fecha Nacimiento" id="fechaNacimiento" />
+                                <input name="fechaNacimiento" type="date" class="feedback-input" placeholder="Fecha Nacimiento" id="fechaNacimiento" />
                             </p>
 
                             <p class="correo">
-                                <input name="correo" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Correo Electr&oacute;nico" id="correo" />
+                                <input name="correo" type="text" class="vfeedback-input" placeholder="Correo Electr&oacute;nico" id="correo" />
                             </p>
 
                             <p class="contrasenya">
-                                <input name="contrasenya" type="password" class="validate[required,custom[email]] feedback-input" placeholder="ContraseÃ±a" id="contrasenya" />
-                            </p>
+                                <input name="contrasenya" type="password" class="feedback-input" placeholder="Contrase&ntilde;a" id="contrasenya" />
+                              </p>
 
                             <div class="submit">
                                 <input type="submit" value="REGISTER" id="button-blue"/>
