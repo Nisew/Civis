@@ -22,7 +22,7 @@
             <label for="responsive-menu">Menu <span id="menu-icon"></span></label>
             <div id="overlay"></div>
             <ul>
-              <li><a href="./index.html">Home</a></li>
+              <li><a href="./index.jsp">Home</a></li>
               <li><a href="./necesitoAyuda.html">Necesito Ayuda</a></li>
               <li><a href="./misInscripciones.html">Mis inscripciones</a></li>
               <li><a href="./misEventos.html">Mis eventos</a></li>
