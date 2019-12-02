@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entities;
 
 import java.sql.Date;
 
-/**
- *
- * @author Usuario
- */
 public class Usuario {
     private int id_usuario;
     private String usuario;
@@ -125,6 +116,8 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id_usuario=" + id_usuario + ", usuario=" + usuario + ", contrasenya=" + contrasenya + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", correo=" + correo + '}';
+        return "El id: " + id_usuario + ", con usuario: " + usuario + ", pass: " + contrasenya 
+                + ", " + nombre + ", " + apellidos 
+                + ", F.Nacimiento: " + fechaNacimiento + ", tel: " + telefono + ", correo: " + correo;
     }
 }
