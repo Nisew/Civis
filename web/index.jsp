@@ -46,7 +46,7 @@
                         <div class="photo" style="background-image: url(./img/panoramic-bcn.jpg)"></div>
                         <ul class="details">
                             <br>
-                            <li class="author">Carrer Pinetons, 42 - GrÃ¡cia</li>
+                            <li class="author">Carrer Pinetons, 42 - Grácia</li>
                             <br>
                             <li class="author">1 Persona</li>
                             <br>
@@ -61,7 +61,7 @@
                         <h2>SOFIA CACERES MARTINEZ</h2>
                         <br>
                         <p>
-                            La funciÃ³n a realizar es la de pasear a dos perros malteses de 5 aÃ±os
+                            La función a realizar es la de pasear a dos perros malteses de 5 años
                             durante 45 mminutos aproximadamente. Se necesita a una persona dinamica
                             ya que estos dos perros tienen mucha energia.
                         </p>
@@ -92,7 +92,7 @@
                         <h2>SOFIA CACERES MARTINEZ</h2>
                         <br>
                         <p>
-                            La funciÃ³n a realizar es la de avaluar un programa realizado por unos
+                            La función a realizar es la de avaluar un programa realizado por unos
                             alumnos que estan realizando un bootcamp intensivo.
                         </p>
                         <button type="button" class="btn btn-success">
