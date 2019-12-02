@@ -41,7 +41,7 @@
               </div>
 
               <div class="container">
-                <p class="message">¿No tienes una cuenta? <a href="./register.html">Crea una ahora</a></p>
+                <p class="message">¿No tienes una cuenta? <a href="./register.jsp">Crea una ahora</a></p>
               </div>
 
             </form>
