@@ -12,26 +12,7 @@
     <body>
 
         <!-- Inicio NavBar -->
-        <div class="row">
-
-            <div class="col-md-12">
-                <nav>
-                    <div class="container">
-                        <input id="responsive-menu" type="checkbox">
-                        <label for="responsive-menu">Menu <span id="menu-icon"></span></label>
-                        <div id="overlay"></div>
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./necesitoAyuda.html">Necesito Ayuda</a></li>
-                            <li><a href="./misInscripciones.html">Mis inscripciones</a></li>
-                            <li><a href="./misEventos.html">Mis eventos</a></li>
-                            <li><a href="./login.jsp">Login</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-
-        </div>
+        <jsp:include flush="true" page="navbar.jsp"></jsp:include>
         <!-- Final NavBar -->
 
         <!-- Inicio visualizaciÃ³n eventos -->

@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,31 +12,10 @@
   <body>
 
     <!-- Inicio NavBar -->
-    <div class="row">
-
-      <div class="col-md-12">
-        <nav>
-          <div class="container">
-            <input id="responsive-menu" type="checkbox">
-            <label for="responsive-menu">Menu <span id="menu-icon"></span></label>
-            <div id="overlay"></div>
-            <ul>
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="./necesitoAyuda.html">Necesito Ayuda</a></li>
-              <li><a href="./misInscripciones.html">Mis inscripciones</a></li>
-              <li><a href="./misEventos.html">Mis eventos</a></li>
-              <li><a href="./login.html">Login</a></li>
-              <!-- <br><br>
-              <li>Hola, Alejandro, bienvenido de nuevo</li> -->
-            </ul>
-          </div>
-        </nav>
-      </div>
-
-    </div>
+    <jsp:include flush="true" page="navbar.jsp"></jsp:include>
     <!-- Final NavBar -->
 
-    <!-- Inicio visualización eventos -->
+    <!-- Inicio visualizaciÃ³n eventos -->
     <div class="row">
 
       <div class="col-md-3"></div>
@@ -67,7 +47,7 @@
               </p>
 
               <p class="descripcion">
-                <textarea name="descripcion" class="feedback-input" placeholder="Descripción del voluntariado" id="descripcion"></textarea>
+                <textarea name="descripcion" class="feedback-input" placeholder="DescripciÃ³n del voluntariado" id="descripcion"></textarea>
               </p>
 
 
@@ -84,7 +64,7 @@
       <div class="col-md-3"></div>
 
     </div>
-    <!-- Fin visualización eventos -->
+    <!-- Fin visualizaciÃ³n eventos -->
 
   </body>
 </html>

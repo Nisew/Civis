@@ -3,6 +3,7 @@
 }
 
 .blog-card {
+    color: white;
   display: flex;
   flex-direction: column;
   margin: 20px;
