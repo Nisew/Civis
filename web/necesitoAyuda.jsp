@@ -34,12 +34,12 @@
                 <input name="localidad" type="text" class="feedback-input" placeholder="Localidad" id="localidad" />
               </p>
 
-              <p class="fecha">
-                <input name="fecha" type="date" class="feedback-input" placeholder="Fecha" id="fecha" />
-              </p>
-
               <p class="hora">
                 <input name="hora" type="time" class="feedback-input" placeholder="Hora" id="hora" />
+              </p>
+              
+              <p class="fecha">
+                <input name="fecha" type="date" class="feedback-input" placeholder="Fecha" id="fecha" />
               </p>
 
               <p class="numPersonas">
