@@ -67,7 +67,7 @@ public class EventosDB {
                     rs.getInt("id_creador")));
         }
         ps.close();
-
+        con.close();
         return eventos;
     }
 
@@ -78,7 +78,7 @@ public class EventosDB {
         ArrayList<Evento> eventos = new ArrayList<>();
 
         ps = con.prepareStatement(
-                "SELECT id_creador, e.id_evento, titulo, descripcion, ubicacion, fecha_evento, "
+                "SELECT usuario, e.id_evento, titulo, descripcion, ubicacion, fecha_evento, "
                 + "hora_evento, aceptado, confirmado, hora_registro, fecha_registro, num_ayudante "
                 + "FROM ayudantes a "
                 + "JOIN eventos e ON a.id_evento = e.id_evento "
@@ -91,7 +91,7 @@ public class EventosDB {
 
         while (rs.next()) {
             eventos.add(new Evento(
-                    rs.getInt("id_creador"), //Mostrar nombre, no id.
+                    rs.getString("usuario"),
                     rs.getInt("id_evento"),
                     rs.getString("titulo"),
                     rs.getString("descripcion"),

@@ -19,6 +19,7 @@ public class Evento {
     private boolean aceptado;
     private boolean confirmado;
     private int id_creador;
+    private String usuarioCreador;
 
     //Constructores
     public Evento() {
@@ -62,6 +63,24 @@ public class Evento {
             String hora_evento, boolean aceptado, boolean confirmado, 
             String fecha_registro, String hora_registro, int num_ayudante) {
         this.id_creador = id_creador;
+        this.id_evento = id_evento;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.ubicacion = ubicacion;
+        this.fecha_evento = fecha_evento;
+        this.hora_evento = hora_evento;
+        this.aceptado = aceptado;
+        this.confirmado = confirmado;
+        this.fecha_registro = fecha_registro;
+        this.hora_registro = hora_registro;
+        this.num_ayudante = num_ayudante;
+    }
+    
+        public Evento(String usuarioCreador, int id_evento, String titulo, 
+            String descripcion, String ubicacion, String fecha_evento, 
+            String hora_evento, boolean aceptado, boolean confirmado, 
+            String fecha_registro, String hora_registro, int num_ayudante) {
+        this.usuarioCreador = usuarioCreador;
         this.id_evento = id_evento;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -174,10 +193,11 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "El id creador: " + id_creador + ", esta " + aceptado + " y " + confirmado 
-                + " en el evento: " + titulo + ", con id " + id_evento + ", " + descripcion + ", en: " + ubicacion 
-                + ", el dia: " + fecha_evento + ", a las: " + hora_evento + ", con num ayudante: " + num_ayudante              
-                + ". Fecha de registro: " + fecha_registro + ", hora de registro: " + hora_registro + ".\n";
+        return "El evento: "+titulo+", con id: "+id_evento+", "+descripcion+", en "+ubicacion
+                +" el dia: "+fecha_evento+", a las: "+hora_evento+", necesita "+num_ayudante+" ayudante."
+                +"\nEl evento fue creado el dia: "+fecha_registro+ ", a las "+hora_registro
+                +" , por: "+usuarioCreador+ " , id:" +id_creador+ ". El evento se encuentra aceptado: "+aceptado
+                + " y confirmado: "+confirmado+"\n\n";
     }
 
     //Metodos
