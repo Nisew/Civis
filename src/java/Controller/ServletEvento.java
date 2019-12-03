@@ -92,6 +92,7 @@ public class ServletEvento extends HttpServlet {
                     ex.printStackTrace();
                 }
 
+                //Se necesitan cookies
             case "joinEvent":
                 //Unirse a evento de otro usuario
                 int userEvento = request.getParameter("nombreUsuario");
