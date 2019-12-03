@@ -67,8 +67,7 @@ public class EventosDB {
                     rs.getInt("id_creador")));
         }
         ps.close();
-        
-        
+
         return eventos;
     }
 
@@ -79,8 +78,8 @@ public class EventosDB {
         ArrayList<Evento> eventos = new ArrayList<>();
 
         ps = con.prepareStatement(
-                "SELECT aceptado, confirmado, titulo, ubicacion, hora_registro, "
-                + "fecha_registro, hora_evento, fecha_evento, descripcion, num_ayudante, id_creador "
+                "SELECT id_creador, e.id_evento, titulo, descripcion, ubicacion, fecha_evento, "
+                + "hora_evento, aceptado, confirmado, hora_registro, fecha_registro, num_ayudante "
                 + "FROM ayudantes a "
                 + "JOIN eventos e ON a.id_evento = e.id_evento "
                 + "JOIN usuarios u ON u.id_usuario = e.id_creador "
@@ -92,21 +91,21 @@ public class EventosDB {
 
         while (rs.next()) {
             eventos.add(new Evento(
+                    rs.getInt("id_creador"), //Mostrar nombre, no id.
+                    rs.getInt("id_evento"),
                     rs.getString("titulo"),
-                    rs.getString("ubicacion"),
-                    rs.getString("hora_registro"),
-                    rs.getString("fecha_registro"),
-                    rs.getString("hora_evento"),
-                    rs.getString("fecha_evento"),
                     rs.getString("descripcion"),
-                    rs.getInt("num_ayudante"),
+                    rs.getString("ubicacion"),
+                    rs.getString("fecha_evento"),
+                    rs.getString("hora_evento"),
                     rs.getBoolean("aceptado"),
                     rs.getBoolean("confirmado"),
-                    rs.getInt("id_creador"))); //Mostrar nombre, no id.
+                    rs.getString("fecha_registro"),
+                    rs.getString("hora_registro"),
+                    rs.getInt("num_ayudante")));
         }
         ps.close();
         con.close();
-        System.out.println(eventos);
         return eventos;
     }
 
