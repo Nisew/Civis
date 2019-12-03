@@ -13,6 +13,8 @@ public class AyudantesDB {
     //Metodo para inscribirs a un ayudante
     public void inscribirAyudante(Ayudante a) throws SQLException {
         con = ConnectionDB.conexion();
+        
+        
 
         ps = con.prepareStatement(
                 "INSERT INTO ayudantes (id_usuario, id_evento, aceptado, confirmado) "

@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -94,7 +95,7 @@ public class ServletEvento extends HttpServlet {
 
             case "joinEvent":
                 //Unirse a evento de otro usuario
-                int userEvento = request.getParameter("nombreUsuario");
+                Cookie cook = new Cookie("nombreUsuario", nombreUsuario);
                 int eventoTitulo = request.getParameter("tituloEvento");
 
                 Ayudante ayudante = new Ayudante(userEvento, eventoTitulo);
