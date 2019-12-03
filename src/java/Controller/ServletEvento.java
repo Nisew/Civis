@@ -34,8 +34,7 @@ public class ServletEvento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String sa = request.getParameter("sa");
-        
-        
+
         EventosDB eventoDB = new EventosDB();
 
         switch (sa) {
@@ -58,17 +57,16 @@ public class ServletEvento extends HttpServlet {
 
                 int np = Integer.parseInt(numPersonas);
                 Cookie ck[] = request.getCookies();
-                String nomUsuario ="";
-                for (Cookie c: ck){
-                    if(c.getName().equals("uName")){
+                String nomUsuario = "";
+                for (Cookie c : ck) {
+                    if (c.getName().equals("uName")) {
                         nomUsuario = c.getValue();
                     }
                 }
 
                 UsuariosDB udbId = new UsuariosDB();
-                
-                //CREO UN OBJETO EVENTO Y EJECUTO EL METODO
 
+                //CREO UN OBJETO EVENTO Y EJECUTO EL METODO
                 try {
                     Usuario userCookie = udbId.verUsuario(nomUsuario);
                     Evento evento1 = new Evento(tituloEvento, ubicacion, hora_registro, fecha_registro, hora_evento, fecha_evento, descripcion, np, userCookie.getId_usuario());
@@ -103,17 +101,25 @@ public class ServletEvento extends HttpServlet {
 
             case "showOwnEvents":
                 //Listar eventos Propios
-                String nombreUsuarioPropios = request.getParameter("nombreUsuario");
-
-                Usuario userEventosPropios = new Usuario(nombreUsuarioPropios);
+                
+                
                 EventosDB edbeventos = new EventosDB();
 
                 try {
+                    Cookie cookie[] = request.getCookies();
+                    String nombreUsuario = "";
+                    for (Cookie c : cookie) {
+                        if (c.getName().equals("uName")) {
+                            nombreUsuario = c.getValue();
+                        }
+                    }
+                    Usuario userEventosPropios = new Usuario(nombreUsuario);
                     edbeventos.listarEventosPropios(userEventosPropios);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
 
+            //Se necesitan cookies
             case "joinEvent":
             /* //Unirse a evento de otro usuario
                 Cookie cook = new Cookie("nombreUsuario", nombreUsuario);

@@ -49,7 +49,7 @@
                             </p>
 
                             <p class="correo">
-                                <input name="correo" type="text" class="vfeedback-input" placeholder="Correo Electr&oacute;nico" id="correo" />
+                                <input name="correo" type="text" class="feedback-input" placeholder="Correo Electr&oacute;nico" id="correo" />
                             </p>
 
                             <p class="contrasenya">

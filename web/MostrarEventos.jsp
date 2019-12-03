@@ -4,6 +4,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entities.Evento"%>
 <%@page import="Database.EventosDB"%>
+
+
 <%
     EventosDB listareventos = new EventosDB();
     ArrayList<Evento> listaEventos = new ArrayList<Evento>();
