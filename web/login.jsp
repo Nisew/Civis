@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/estilosNavBar.css">
     <link rel="stylesheet" href="./styles/estilosCarta.css">
-    <link rel="stylesheet" href="./styles/estilosFormEvento.css">
+    <link rel="stylesheet" href="./styles/estilosFormLogin.css">
   </head>
   <body>
 
@@ -33,7 +34,7 @@
     </div>
     <!-- Final NavBar -->
 
-    <!-- Inicio visualización eventos -->
+    <!-- Inicio visualizaciÃ³n eventos -->
     <div class="row">
 
       <div class="col-md-3"></div>
@@ -42,38 +43,27 @@
 
         <div id="form-main">
           <div id="form-div">
-            <form class="form" id="form1" action="evento?sa=newEvent" method="post">
+              <form class="form" id="formLogin" action="usuario?sa=userLogin" method="post" align:center>
 
-              <p class="titulo">
-                <input name="titulo" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Titulo" id="titulo" />
+              <p class="nombreUsuario">
+                <input name="nombreUsuario" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />
               </p>
 
-              <p class="localidad">
-                <input name="localidad" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Localidad" id="localidad" />
+              <p class="contra">
+                <input name="contrasenya" type="password" class="validate[required,custom[email]] feedback-input" placeholder="ContraseÃ±a" id="contrasenya" />
               </p>
-
-              <p class="fecha">
-                <input name="fecha" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Fecha" id="fecha" />
-              </p>
-
-              <p class="hora">
-                <input name="hora" type="text" class="validate[required,custom[email]] feedback-input" placeholder="Hora" id="hora" />
-              </p>
-
-              <p class="numPersonas">
-                <input name="numPersonas" type="text" class="validate[required,custom[email]] feedback-input" placeholder="NumPersonas" id="numPersonas" />
-              </p>
-
-              <p class="descripcion">
-                <textarea name="descripcion" class="validate[required,length[6,300]] feedback-input" placeholder="Descripcion" id="descripcion"></textarea>
-              </p>
-
 
               <div class="submit">
-                <input type="submit" value="ENVIAR" id="button-blue"/>
+                <input type="submit" value="LOGIN" id="button-blue"/>
                 <div class="ease"></div>
               </div>
+
+              <div class="container">
+                <p class="message">¿No tienes una cuenta? <a href="./register.jsp">Crea una ahora</a></p>
+              </div>
+
             </form>
+
           </div>
         </div>
 
@@ -82,7 +72,7 @@
       <div class="col-md-3"></div>
 
     </div>
-    <!-- Fin visualización eventos -->
+    <!-- Fin visualizaciÃ³n eventos -->
 
   </body>
 </html>
