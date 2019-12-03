@@ -13,8 +13,6 @@
     } catch (SQLException ex) {
         ex.printStackTrace();
     }
-
-    // request.setAttribute("listaEventos", listaEventos);
 %>
 <div class="row">
 

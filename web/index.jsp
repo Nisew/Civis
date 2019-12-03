@@ -14,10 +14,14 @@
     <body>
 
         <!-- Inicio NavBar -->
-        <jsp:include flush="true" page="navbar.jsp"></jsp:include>
-        <!-- Final NavBar -->
+        
+       
+                
+        <jsp:include flush="true" page="navbarlogged.jsp"></jsp:include>
+           
+            <!-- Final NavBar -->
 
-        <!-- Inicio visualizaciÃ³n eventos -->
+            <!-- Inicio visualizaciÃ³n eventos -->
         <jsp:include flush="true" page="MostrarEventos.jsp"></jsp:include>
 
         <!-- Fin visualizaciÃ³n eventos -->

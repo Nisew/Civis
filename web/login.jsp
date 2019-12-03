@@ -13,7 +13,7 @@
   <body>
 
     <!-- Inicio NavBar -->
-    <jsp:include flush="true" page="navbar.jsp"></jsp:include>
+    <jsp:include flush="true" page="navbarlogged.jsp"></jsp:include>
     <!-- Final NavBar -->
 
     <!-- Inicio visualizaciÃ³n eventos -->

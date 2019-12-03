@@ -27,6 +27,7 @@ public class Evento {
         this.titulo = pTitulo;
     }
     
+    
     public Evento(String titulo, String ubicacion, 
             String hora_registro, String fecha_registro, String hora_evento, 
             String fecha_evento, String descripcion, int num_ayudante, int id_creador) {

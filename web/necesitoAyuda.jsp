@@ -24,7 +24,7 @@
 
         <div id="form-main">
           <div id="form-div">
-            <form class="form" id="form1">
+            <form class="form" id="form1" action="evento?sa=newEvent" method="post">
 
               <p class="titulo">
                 <input name="titulo" type="text" class="feedback-input" placeholder="Titulo" id="titulo" />

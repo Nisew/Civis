@@ -26,7 +26,7 @@ public class ServletUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String sa = request.getParameter("sa");
-        String id = request.getParameter("idUsuario");
+        
         //int idUsuario = Integer.parseInt(id);
 
         switch (sa) {
@@ -67,15 +67,22 @@ public class ServletUsuario extends HttpServlet {
                     ex.printStackTrace();
                 }
                 
+                          
                 if(logueado){
                     request.setAttribute("user", userLogin);
-                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //
+                     
+                    Cookie ck = new Cookie("uName", userLogin);
+                    response.addCookie(ck);
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                     rd.forward(request, response);
+                    
                 } else {
                     request.setAttribute("user", userLogin);
-                    RequestDispatcher rd = request.getRequestDispatcher("lognotok.jsp"); //
+                    RequestDispatcher rd = request.getRequestDispatcher("lognotok.jsp");
                     rd.forward(request, response);
                 }
+                
+                
                 break;
        
         }

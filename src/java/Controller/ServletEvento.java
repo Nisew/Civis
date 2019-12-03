@@ -2,13 +2,16 @@ package Controller;
 
 import Database.AyudantesDB;
 import Database.EventosDB;
+import Database.UsuariosDB;
 import Entities.Ayudante;
 import Entities.Evento;
 import Entities.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -31,8 +34,8 @@ public class ServletEvento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String sa = request.getParameter("sa");
-        String id = request.getParameter("idUsuario");
-        int idUsuario = Integer.parseInt(id);
+        
+        
         EventosDB eventoDB = new EventosDB();
 
         switch (sa) {
@@ -46,17 +49,35 @@ public class ServletEvento extends HttpServlet {
                 String numPersonas = request.getParameter("numPersonas");
                 String descripcion = request.getParameter("descripcion");
                 hora_evento += ":00";
-                int np = Integer.parseInt(numPersonas);
 
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                SimpleDateFormat sdf_f = new SimpleDateFormat("YYYY-MM-dd");
+                String hora_registro = sdf.format(cal.getTime());
+                String fecha_registro = sdf_f.format(cal.getTime());
+
+                int np = Integer.parseInt(numPersonas);
+                Cookie ck[] = request.getCookies();
+                String nomUsuario ="";
+                for (Cookie c: ck){
+                    if(c.getName().equals("uName")){
+                        nomUsuario = c.getValue();
+                    }
+                }
+
+                UsuariosDB udbId = new UsuariosDB();
+                
                 //CREO UN OBJETO EVENTO Y EJECUTO EL METODO
-                //Evento evento1 = new Evento(tituloEvento, ubicacion, hora_evento, fecha_evento, descripcion, np);
-               /* try {
+
+                try {
+                    Usuario userCookie = udbId.verUsuario(nomUsuario);
+                    Evento evento1 = new Evento(tituloEvento, ubicacion, hora_registro, fecha_registro, hora_evento, fecha_evento, descripcion, np, userCookie.getId_usuario());
 
                     eventoDB.crearEvento(evento1);
 
                 } catch (SQLException ex) {
                     Logger.getLogger(ServletEvento.class.getName()).log(Level.SEVERE, null, ex);
-                } */
+                }
 
                 //ENVIAMOS LA INFORMACION A LA SIGUIENTE PAGINA
                 request.setAttribute("user", tituloEvento);
@@ -77,7 +98,7 @@ public class ServletEvento extends HttpServlet {
                 request.setAttribute("listaEventos", listaEventos);
                 rd = request.getRequestDispatcher("index.jsp"); //
                 rd.forward(request, response);
-                
+
                 break;
 
             case "showOwnEvents":
@@ -94,7 +115,7 @@ public class ServletEvento extends HttpServlet {
                 }
 
             case "joinEvent":
-                //Unirse a evento de otro usuario
+            /* //Unirse a evento de otro usuario
                 Cookie cook = new Cookie("nombreUsuario", nombreUsuario);
                 int eventoTitulo = request.getParameter("tituloEvento");
 
@@ -105,7 +126,7 @@ public class ServletEvento extends HttpServlet {
                     usuarioUneEvento.inscribirAyudante(eventoAUnir);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                }
+                }*/
         }
 
     }
