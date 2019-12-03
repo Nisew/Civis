@@ -12,18 +12,13 @@
         <link rel="stylesheet" href="./styles/estilosFormEvento.css">
     </head>
     <body>
-
-        <!-- Inicio NavBar -->
         
-       
-                
+        <!-- Inicio NavBar -->
         <jsp:include flush="true" page="navbarlogged.jsp"></jsp:include>
-           
-            <!-- Final NavBar -->
+        <!-- Final NavBar -->
 
-            <!-- Inicio visualizaciÃ³n eventos -->
+        <!-- Inicio visualizaciÃ³n eventos -->
         <jsp:include flush="true" page="MostrarEventos.jsp"></jsp:include>
-
         <!-- Fin visualizaciÃ³n eventos -->
 
     </body>
