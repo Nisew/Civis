@@ -1,13 +1,10 @@
 package Controller;
 
-import Database.AyudantesDB;
 import Database.EventosDB;
 import Database.UsuariosDB;
-import Entities.Ayudante;
 import Entities.Evento;
 import Entities.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,7 +36,7 @@ public class ServletEvento extends HttpServlet {
 
         switch (sa) {
             case "newEvent":
-                // obtengo los datos introducidos por el usuario
+                //CREAR UN NUEVO EVENTO
 
                 String tituloEvento = request.getParameter("titulo");
                 String ubicacion = request.getParameter("localidad");
@@ -69,6 +66,7 @@ public class ServletEvento extends HttpServlet {
                 //CREO UN OBJETO EVENTO Y EJECUTO EL METODO
                 try {
                     Usuario userCookie = udbId.verUsuario(nomUsuario);
+                    
                     Evento evento1 = new Evento(tituloEvento, ubicacion, hora_registro, fecha_registro, hora_evento, fecha_evento, descripcion, np, userCookie.getId_usuario());
 
                     eventoDB.crearEvento(evento1);
@@ -84,24 +82,25 @@ public class ServletEvento extends HttpServlet {
                 break;
 
             case "listEvents":
-                //LISTAMOS LOS EVENTOS
+                //VISUALIZAR TODOS LOS EVENTOS
+                
                 EventosDB listareventos = new EventosDB();
                 ArrayList<Evento> listaEventos = new ArrayList<>();
 
                 try {
                     listaEventos = listareventos.mostrarEventos();
+                    
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+                
                 request.setAttribute("listaEventos", listaEventos);
-                rd = request.getRequestDispatcher("index.jsp"); //
+                rd = request.getRequestDispatcher("index.jsp"); 
                 rd.forward(request, response);
-
                 break;
 
             case "showOwnEvents":
-                //Listar eventos Propios
-                
+                //VISUALIZAR LOS EVENTOS LOS CUALES HAS CREADO
                 
                 EventosDB edbeventos = new EventosDB();
 
@@ -113,28 +112,38 @@ public class ServletEvento extends HttpServlet {
                             nombreUsuario = c.getValue();
                         }
                     }
+                    
                     Usuario userEventosPropios = new Usuario(nombreUsuario);
                     edbeventos.listarEventosPropios(userEventosPropios);
+                    
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-
-            //Se necesitan cookies
-            case "joinEvent":
-            /* //Unirse a evento de otro usuario
-                Cookie cook = new Cookie("nombreUsuario", nombreUsuario);
-                int eventoTitulo = request.getParameter("tituloEvento");
-
-                Ayudante ayudante = new Ayudante(userEvento, eventoTitulo);
-                AyudantesDB usuarioUneEvento = new AyudantesDB();
-
+                break;
+                
+            case "listJoinedEvents":
+                //VISUALIZAR LOS EVENTOS A LOS CUALES ESTAS INSCRITOS
+                
+                EventosDB eventosInscritos = new EventosDB();
+                
                 try {
-                    usuarioUneEvento.inscribirAyudante(eventoAUnir);
+                    Cookie cookie[] = request.getCookies();
+                    String nombreUsuario = "";
+                    for (Cookie c : cookie) {
+                        if (c.getName().equals("uName")) {
+                            nombreUsuario = c.getValue();
+                        }
+                    }
+                    
+                    Usuario userEventsInscritos = new Usuario(nombreUsuario);
+                    eventosInscritos.verEstadoInscripcion(userEventsInscritos);
+                    
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                }*/
+                }
+                
+                break;
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,14 +1,9 @@
 package Controller;
 
 import Database.UsuariosDB;
-import Entities.Evento;
 import Entities.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +25,8 @@ public class ServletUsuario extends HttpServlet {
         //int idUsuario = Integer.parseInt(id);
         switch (sa) {
             case "newUsuario":
-                //Registro de usuario nuevo        
+                //CREAR UN NUEVO USUARIO / REGISTRARTE
+                
                 String usuario = request.getParameter("nombreUsuario");
                 String psswrd = request.getParameter("contrasenya");
                 String nombre = request.getParameter("nombre");
@@ -46,22 +42,25 @@ public class ServletUsuario extends HttpServlet {
                     nuevousuario.registroUsuario(u_nuevo);
                     RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                     rd.forward(request, response);
+                    
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+                
                 break;
 
             case "userLogin":
-                //Login
+                //LOGUEARSE
+                
                 String userLogin = request.getParameter("nombreUsuario");
                 String contrasenya = request.getParameter("contrasenya");
 
-                UsuariosDB dbLogin = new UsuariosDB();
-
+                UsuariosDB dbLogin = new UsuariosDB();       
                 boolean logueado = false;
 
                 try {
                     logueado = dbLogin.inicioSesion(userLogin, contrasenya);
+                    
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
