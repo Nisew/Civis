@@ -3,6 +3,7 @@ package Entities;
 import java.sql.Date;
 
 public class Usuario {
+
     private int id_usuario;
     private String usuario;
     private String contrasenya;
@@ -11,25 +12,25 @@ public class Usuario {
     private String fechaNacimiento;
     private String telefono;
     private String correo;
-    
-    public Usuario (){    
+
+    public Usuario() {
     }
-    
-    public Usuario (String pUsuario){  
+
+    public Usuario(String pUsuario) {
         this.usuario = pUsuario;
     }
-    
-    public Usuario (String pUsuario, String pContrasenya){
-        this.usuario=pUsuario;
+
+    public Usuario(String pUsuario, String pContrasenya) {
+        this.usuario = pUsuario;
         this.contrasenya = pContrasenya;
     }
-    
-    public Usuario (int pId, String pUsuario){
+
+    public Usuario(int pId, String pUsuario) {
         this.id_usuario = pId;
         this.usuario = pUsuario;
     }
 
-    public Usuario (int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, String fechaNacimiento, String telefono, String correo) {
+    public Usuario(int id_usuario, String usuario, String contrasenya, String nombre, String apellidos, String fechaNacimiento, String telefono, String correo) {
         this.id_usuario = id_usuario;
         this.usuario = usuario;
         this.contrasenya = contrasenya;
@@ -39,8 +40,8 @@ public class Usuario {
         this.telefono = telefono;
         this.correo = correo;
     }
-    
-    public Usuario (String usuario, String contrasenya, String nombre, String apellidos, String fechaNacimiento, String telefono, String correo) {
+
+    public Usuario(String usuario, String contrasenya, String nombre, String apellidos, String fechaNacimiento, String telefono, String correo) {
         this.usuario = usuario;
         this.contrasenya = contrasenya;
         this.nombre = nombre;
@@ -116,8 +117,10 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "El id: " + id_usuario + ", con usuario: " + usuario + ", pass: " + contrasenya 
-                + ", " + nombre + ", " + apellidos 
-                + ", F.Nacimiento: " + fechaNacimiento + ", tel: " + telefono + ", correo: " + correo;
+        return "El id: " + id_usuario + ", con usuario: " + usuario
+                + ", pass: " + contrasenya
+                + ", " + nombre + ", " + apellidos
+                + ", F.Nacimiento: " + fechaNacimiento
+                + ", tel: " + telefono + ", correo: " + correo + "\n";
     }
 }

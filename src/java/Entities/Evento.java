@@ -190,7 +190,12 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "Evento{" + "id_evento=" + id_evento + ", titulo=" + titulo + ", ubicacion=" + ubicacion + ", hora_registro=" + hora_registro + ", fecha_registro=" + fecha_registro + ", hora_evento=" + hora_evento + ", fecha_evento=" + fecha_evento + ", descripcion=" + descripcion + ", num_ayudante=" + num_ayudante + ", aceptado=" + aceptado + ", confirmado=" + confirmado + ", id_creador=" + id_creador + '}';
+        return "El id: " + id_evento + ", con el titulo: " + titulo 
+                + ", ubicacion: " + ubicacion + ", hora registro: " + hora_registro 
+                + ", fecha registro: " + fecha_registro + ", hora evento: " + hora_evento 
+                + ", fecha evento: " + fecha_evento + ", descripcion: " + descripcion 
+                + ", num ayudante: " + num_ayudante + ", aceptado: " + aceptado 
+                + ", confirmado: " + confirmado + ", id creador: " + id_creador + ".\n";
     }
     
     //Metodos

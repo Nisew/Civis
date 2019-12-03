@@ -112,10 +112,11 @@ public class EventosDB {
 
     //Metodo para listar todos los eventos que un usuario ha creado
     public ArrayList<Evento> listarEventosPropios(Usuario u) throws SQLException {
+        con = ConnectionDB.conexion();
 
         ArrayList<Evento> eventos = new ArrayList<>();
 
-        ps = con.prepareStatement("SELECT * FROM eventos id_creador = ?");
+        ps = con.prepareStatement("SELECT * FROM eventos WHERE id_creador = ?");
         ps.setInt(1, u.getId_usuario());
 
         ResultSet rs = ps.executeQuery();
