@@ -106,4 +106,30 @@ public class UsuariosDB {
         con.close();
         return u;
     }
+    
+    //Metodo para mostrar perfil de un usuario
+    public Usuario verUsuarioId(int id) throws SQLException {
+        con = ConnectionDB.conexion();
+        Usuario u = new Usuario();
+
+        ps = con.prepareStatement("SELECT * FROM usuarios WHERE id_usuario = ?");
+        ps.setInt(1, id);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            u.setId_usuario(rs.getInt("id_usuario"));
+            u.setUsuario(rs.getString("usuario"));
+            u.setContrasenya(rs.getString("contrasenya"));
+            u.setNombre(rs.getString("nombre"));
+            u.setApellidos(rs.getString("apellidos"));
+            u.setFechaNacimiento(rs.getString("fecha_nacimiento"));
+            u.setTelefono(rs.getString("telefono"));
+            u.setCorreo(rs.getString("correo"));
+        }
+
+        ps.close();
+        con.close();
+        return u;
+    }
 }

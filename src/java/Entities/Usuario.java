@@ -19,6 +19,11 @@ public class Usuario {
     public Usuario(String pUsuario) {
         this.usuario = pUsuario;
     }
+    
+    public Usuario(int id){
+        this.id_usuario = id;
+    }
+    
 
     public Usuario(String pUsuario, String pContrasenya) {
         this.usuario = pUsuario;
@@ -114,6 +119,7 @@ public class Usuario {
     public void setCorreo(String corre) {
         this.correo = corre;
     }
+    
 
     @Override
     public String toString() {

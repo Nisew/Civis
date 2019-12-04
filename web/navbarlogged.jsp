@@ -26,12 +26,13 @@
                 <label for="responsive-menu">Menu <span id="menu-icon"></span></label>
                 <div id="overlay"></div>
                 <ul>
+                    <li><h2><%out.print(nombreUsuario);%></h2></li>
                     <li><a href="./index.jsp">Home</a></li>
                     <li><a href="./necesitoAyuda.jsp">Necesito Ayuda</a></li>
                     <li><a href="./misInscripciones.jsp">Mis inscripciones</a></li>
-                    <li><a href="./misEventos.jsp">Mis eventos</a></li>
-                    <li><form action="usuario?sa=logOut" method="post"><a href="index.jsp">Logout</a></form></li>
-                    <li><a href="./perfil.jsp"><%out.print(nombreUsuario);%></a></li>
+                    <li><a href="evento?sa=showOwnEvents">Mis eventos</a></li>
+                    <li><a href="usuario?sa=logOut">Logout</a></li>
+                    
                 </ul>
             </div>
         </nav>

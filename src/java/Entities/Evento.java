@@ -201,7 +201,7 @@ public class Evento {
                 +"\nEl evento fue creado el dia: "+fecha_registro+ ", a las "+hora_registro
                 +" , por: "+usuarioCreador+ " , id:" +id_creador+ ". El evento se encuentra aceptado: "+aceptado
                 + " y confirmado: "+confirmado+"\n\n";
-    }
+    } 
 
     //Metodos
     public static String horaActual() {
@@ -217,4 +217,5 @@ public class Evento {
         String fechaActual = horaFormato.format(new Date());
         return fechaActual;
     }
+    
 }
