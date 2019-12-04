@@ -217,4 +217,5 @@ public class Evento {
         String fechaActual = horaFormato.format(new Date());
         return fechaActual;
     }
+    
 }

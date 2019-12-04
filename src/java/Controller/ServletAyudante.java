@@ -63,6 +63,7 @@ public class ServletAyudante extends HttpServlet {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+                break;
         }
     }
 

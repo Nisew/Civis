@@ -3,6 +3,7 @@ package Entities;
 public class Ayudante {
     
     //Atributos
+    private String usuario;
     private int id_usuario;
     private int id_evento;
     private boolean aceptado;
@@ -12,6 +13,11 @@ public class Ayudante {
     public Ayudante(){
         this.aceptado= false;
         this.confirmado= false;
+    }
+    
+    public Ayudante(String usuario, int id_evento){
+        this.usuario = usuario;
+        this.id_evento = id_evento;
     }
     
     public Ayudante(int id_usuario, int id_evento) {

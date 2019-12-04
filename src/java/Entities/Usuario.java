@@ -119,6 +119,7 @@ public class Usuario {
     public void setCorreo(String corre) {
         this.correo = corre;
     }
+    
 
     @Override
     public String toString() {

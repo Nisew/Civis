@@ -1,8 +1,11 @@
+<%@page import="Database.UsuariosDB"%>
+<%@page import="Entities.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
-
+    Usuario creador = new Usuario();
+    UsuariosDB creadorDB = new UsuariosDB();
 %>
 <!DOCTYPE html>
 <html>
@@ -47,11 +50,11 @@
                         <div class="description">
                             <h1><c:out value="${Evento.titulo}"/></h1>
                             <br><br>
-                            <h2>SOFIA CACERES MARTINEZ</h2>
-                            <br>
+                            
                             <p></p>
+                            <a href="ayudante?sa=listInscritos">
                             <div class="recuadroNombres">
-                                <i class="fas fa-users">Giulio Mezzetti</i>
+                                <i class="fas fa-users">INSCRITOS</i>
                                 <button type="button" class="btn btn-accept">
                                     <!-- <i class="fas fa-check"></i> -->
                                     A
@@ -62,6 +65,7 @@
                                 </button>
                                 <br>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </c:forEach> 
