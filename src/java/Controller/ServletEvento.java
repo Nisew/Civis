@@ -122,11 +122,7 @@ public class ServletEvento extends HttpServlet {
                     } catch (SQLException ex){
                         ex.printStackTrace();
                     }
-                    /*
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-                */
+                
                 request.setAttribute("listaEventosPropios", listaEventosPropios);
                 rd = request.getRequestDispatcher("misEventos.jsp"); 
                 rd.forward(request, response);
