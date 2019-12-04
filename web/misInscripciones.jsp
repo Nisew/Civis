@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,29 +12,10 @@
   <body>
 
     <!-- Inicio NavBar -->
-    <div class="row">
-
-      <div class="col-md-12">
-        <nav>
-          <div class="container">
-            <input id="responsive-menu" type="checkbox">
-            <label for="responsive-menu">Menu <span id="menu-icon"></span></label>
-            <div id="overlay"></div>
-            <ul>
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="./necesitoAyuda.html">Necesito Ayuda</a></li>
-              <li><a href="./misInscripciones.html">Mis inscripciones</a></li>
-              <li><a href="./misEventos.html">Mis eventos</a></li>
-              <li><a href="./login.jsp">Login</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-
-    </div>
+    <jsp:include flush="true" page="navbarlogged.jsp"></jsp:include>
     <!-- Final NavBar -->
 
-    <!-- Inicio visualización eventos -->
+    <!-- Inicio visualizaciÃ³n eventos -->
     <div class="row">
 
       <div class="col-md-2"></div>
@@ -45,7 +27,7 @@
             <div class="photo" style="background-image: url(./img/panoramic-bcn.jpg)"></div>
             <ul class="details">
               <br>
-              <li class="author">Carrer Pinetons, 42 - Grácia</li>
+              <li class="author">Carrer Pinetons, 42 - GrÃ¡cia</li>
               <br>
               <li class="author">1 Persona</li>
               <br>
@@ -57,15 +39,19 @@
           <div class="description">
             <h1>Pasear dos perros malteses</h1>
             <br><br>
-            <h2>SOFIA CACERES MARTINEZ</h2>
+            <h2>SOFIA CACERES MARTINEZ</h2></h2>
             <br>
             <p>
-              La función a realizar es la de pasear a dos perros malteses de 5 años
+              La funciÃ³n a realizar es la de pasear a dos perros malteses de 5 aÃ±os
               durante 45 mminutos aproximadamente. Se necesita a una persona dinamica
               ya que estos dos perros tienen mucha energia.
             </p>
+            <button type="button" class="btnIzquierda btn-normal">
+              ACEPTADO
+            </button>
+
             <button type="button" class="btn btn-success">
-              INSCRIBIRME
+              CONFIRMAR
             </button>
           </div>
         </div>
@@ -75,14 +61,14 @@
           <div class="meta">
             <div class="photo" style="background-image: url(./img/panoramic-bcn.jpg)"></div>
             <ul class="details">
-            <br>
-            <li class="author">Carrer Llastics, 22 - Arc de Triomf</li>
-            <br>
-            <li class="author">3 Personas</li>
-            <br>
-            <li class="author">5 Diciembre 2019</li>
-            <br>
-            <li class="author">9:00</li>
+              <br>
+              <li class="author">Carrer Llastics, 22 - Arc de Triomf</li>
+              <br>
+              <li class="author">3 Personas</li>
+              <br>
+              <li class="author">5 Diciembre 2019</li>
+              <br>
+              <li class="author">9:00</li>
             </ul>
           </div>
           <div class="description">
@@ -91,12 +77,17 @@
             <h2>SOFIA CACERES MARTINEZ</h2>
             <br>
             <p>
-              La función a realizar es la de avaluar un programa realizado por unos
+              La funciÃ³n a realizar es la de avaluar un programa realizado por unos
               alumnos que estan realizando un bootcamp intensivo.
             </p>
-            <button type="button" class="btn btn-success">
-              INSCRIBIRME
+            <button type="button" class="btnIzquierda btn-normal">
+              RECHAZADO
             </button>
+
+            <button type="button" class="btn btn-danger">
+              ELIMINAR
+            </button>
+
           </div>
         </div>
 
@@ -105,7 +96,7 @@
       <div class="col-md-2"></div>
 
     </div>
-    <!-- Fin visualización eventos -->
+    <!-- Fin visualizaciÃ³n eventos -->
 
   </body>
 </html>

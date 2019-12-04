@@ -1,14 +1,9 @@
 package Controller;
 
 import Database.UsuariosDB;
-import Entities.Evento;
 import Entities.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,12 +21,12 @@ public class ServletUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String sa = request.getParameter("sa");
-        String id = request.getParameter("idUsuario");
-        //int idUsuario = Integer.parseInt(id);
 
+        //int idUsuario = Integer.parseInt(id);
         switch (sa) {
             case "newUsuario":
-                //Registro de usuario nuevo        
+                //CREAR UN NUEVO USUARIO / REGISTRARTE
+                
                 String usuario = request.getParameter("nombreUsuario");
                 String psswrd = request.getParameter("contrasenya");
                 String nombre = request.getParameter("nombre");
@@ -45,36 +40,52 @@ public class ServletUsuario extends HttpServlet {
                 try {
                     UsuariosDB nuevousuario = new UsuariosDB();
                     nuevousuario.registroUsuario(u_nuevo);
+                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                    rd.forward(request, response);
+                    
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+                
                 break;
+
             case "userLogin":
-                //Login
+                //LOGUEARSE
+                
                 String userLogin = request.getParameter("nombreUsuario");
                 String contrasenya = request.getParameter("contrasenya");
 
-                UsuariosDB dbLogin = new UsuariosDB();
-                                
+                UsuariosDB dbLogin = new UsuariosDB();       
                 boolean logueado = false;
-                
+
                 try {
                     logueado = dbLogin.inicioSesion(userLogin, contrasenya);
+                    
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                
-                if(logueado){
+
+                if (logueado) {
                     request.setAttribute("user", userLogin);
-                    RequestDispatcher rd = request.getRequestDispatcher("logok.jsp"); //
-                    rd.forward(request, response);
+
+                    Cookie ck = new Cookie("uName", userLogin);
+                    response.addCookie(ck);
+                    response.sendRedirect("index.jsp");
+
                 } else {
                     request.setAttribute("user", userLogin);
-                    RequestDispatcher rd = request.getRequestDispatcher("lognotok.jsp"); //
+                    RequestDispatcher rd = request.getRequestDispatcher("lognotok.jsp");
                     rd.forward(request, response);
                 }
+
                 break;
-       
+            case "logOut":
+                Cookie ck = new Cookie("uName", "");
+                ck.setMaxAge(0);
+                response.addCookie(ck);
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.forward(request, response);
+                break;
         }
 
         /*Cookie ck = new Cookie("user", "sonoo jaiswal");//creating cookie object  
@@ -83,7 +94,6 @@ public class ServletUsuario extends HttpServlet {
         request.setAttribute("user", u_nuevo);
         RequestDispatcher rd = request.getRequestDispatcher("register.jsp"); //
         rd.forward(request, response); */
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
