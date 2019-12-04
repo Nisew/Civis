@@ -29,7 +29,7 @@
                     <li><a href="./index.jsp">Home</a></li>
                     <li><a href="./necesitoAyuda.jsp">Necesito Ayuda</a></li>
                     <li><a href="./misInscripciones.jsp">Mis inscripciones</a></li>
-                    <li><a href="./misEventos.jsp">Mis eventos</a></li>
+                    <li><a href="evento?sa=showOwnEvents">Mis eventos</a></li>
                     <li><form action="usuario?sa=logOut" method="post"><a href="index.jsp">Logout</a></form></li>
                     <li><a href="./perfil.jsp"><%out.print(nombreUsuario);%></a></li>
                 </ul>

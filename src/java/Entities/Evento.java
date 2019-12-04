@@ -194,14 +194,14 @@ public class Evento {
         this.id_creador = id_creador;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "El evento: "+titulo+", con id: "+id_evento+", "+descripcion+", en "+ubicacion
                 +" el dia: "+fecha_evento+", a las: "+hora_evento+", necesita "+num_ayudante+" ayudante."
                 +"\nEl evento fue creado el dia: "+fecha_registro+ ", a las "+hora_registro
                 +" , por: "+usuarioCreador+ " , id:" +id_creador+ ". El evento se encuentra aceptado: "+aceptado
                 + " y confirmado: "+confirmado+"\n\n";
-    }
+    } */
 
     //Metodos
     public static String horaActual() {

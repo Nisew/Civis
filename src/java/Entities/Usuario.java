@@ -19,6 +19,7 @@ public class Usuario {
     public Usuario(String pUsuario) {
         this.usuario = pUsuario;
     }
+    
 
     public Usuario(String pUsuario, String pContrasenya) {
         this.usuario = pUsuario;

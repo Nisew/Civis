@@ -103,22 +103,34 @@ public class ServletEvento extends HttpServlet {
                 //VISUALIZAR LOS EVENTOS LOS CUALES HAS CREADO
                 
                 EventosDB edbeventos = new EventosDB();
-
+                UsuariosDB edbusuarios = new UsuariosDB();
+                
+                ArrayList<Evento> listaEventosPropios = new ArrayList<>();
+                String nombreUs = "";
                 try {
                     Cookie cookie[] = request.getCookies();
-                    String nombreUsuario = "";
+                    
                     for (Cookie c : cookie) {
                         if (c.getName().equals("uName")) {
-                            nombreUsuario = c.getValue();
+                            nombreUs = c.getValue();
                         }
                     }
                     
-                    Usuario userEventosPropios = new Usuario(nombreUsuario);
-                    edbeventos.listarEventosPropios(userEventosPropios);
                     
+                    Usuario userEventosPropios = edbusuarios.verUsuario(nombreUs);
+                    listaEventosPropios = edbeventos.listarEventosPropios(userEventosPropios);
+                    } catch (SQLException ex){
+                        ex.printStackTrace();
+                    }
+                    /*
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+                */
+                request.setAttribute("listaEventosPropios", listaEventosPropios);
+                rd = request.getRequestDispatcher("misEventos.jsp"); 
+                rd.forward(request, response);
+                
                 break;
                 
             case "listJoinedEvents":
