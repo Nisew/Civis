@@ -1,5 +1,7 @@
+<%@page import="Database.UsuariosDB"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Entities.Usuario"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entities.Evento"%>
@@ -7,8 +9,10 @@
 
 
 <%
+    UsuariosDB creadorDB = new UsuariosDB();
     EventosDB listareventos = new EventosDB();
     ArrayList<Evento> listaEventos = new ArrayList<Evento>();
+    Usuario creador = new Usuario();
 
     try {
         listaEventos = listareventos.mostrarEventos();
@@ -44,7 +48,9 @@
             <div class="description">
                 <h1><%out.println(evento.getTitulo());%></h1>
                 <br><br>
-                <h2>SOFIA CACERES MARTINEZ</h2>
+                <h2><%
+                      creador = creadorDB.verUsuarioId(evento.getId_creador());
+                      out.print(creador.getUsuario()); %></h2>
                 <br>
                 <p><%out.println(evento.getDescripcion());%></p>
                 <button type="button" class="btn btn-success">

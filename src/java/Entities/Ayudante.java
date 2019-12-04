@@ -9,6 +9,11 @@ public class Ayudante {
     private boolean confirmado;
     
     //Constructores
+    public Ayudante(){
+        this.aceptado= false;
+        this.confirmado= false;
+    }
+    
     public Ayudante(int id_usuario, int id_evento) {
         this.id_usuario = id_usuario;
         this.id_evento = id_evento;

@@ -20,6 +20,10 @@ public class Usuario {
         this.usuario = pUsuario;
     }
     
+    public Usuario(int id){
+        this.id_usuario = id;
+    }
+    
 
     public Usuario(String pUsuario, String pContrasenya) {
         this.usuario = pUsuario;
