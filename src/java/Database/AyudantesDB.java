@@ -12,9 +12,8 @@ public class AyudantesDB {
 
     //Metodo para inscribirs a un ayudante
     public void inscribirAyudante(Ayudante a) throws SQLException {
+
         con = ConnectionDB.conexion();
-        
-        
 
         ps = con.prepareStatement(
                 "INSERT INTO ayudantes (id_usuario, id_evento, aceptado, confirmado) "
@@ -28,5 +27,69 @@ public class AyudantesDB {
 
         ps.close();
         con.close();
+    }
+
+    //CONFIRMAR AYUDNTE
+    public void confirmarAyudante(Ayudante a) throws SQLException {
+
+        con = ConnectionDB.conexion();
+
+        ps = con.prepareStatement("UPDATE ayudantes SET confirmado = 1 WHERE id_usuario = ? and id_evento = ? ");
+        ps.setInt(1, a.getId_usuario());
+        ps.setInt(2, a.getId_evento());
+
+        ps.executeUpdate();
+
+        ps.close();
+        con.close();
+
+    }
+    
+    //RECHAZAR AYUDANTE
+    public void rechazarAyudante(Ayudante a) throws SQLException {
+
+        con = ConnectionDB.conexion();
+
+        ps = con.prepareStatement("UPDATE ayudantes SET confirmado = 0 WHERE id_usuario = ? and id_evento = ? ");
+        ps.setInt(1, a.getId_usuario());
+        ps.setInt(2, a.getId_evento());
+
+        ps.executeUpdate();
+
+        ps.close();
+        con.close();
+
+    }
+    
+    //ACEPTAR AYUDA
+    public void aceptarAyuda(Ayudante a) throws SQLException {
+
+        con = ConnectionDB.conexion();
+
+        ps = con.prepareStatement("UPDATE ayudantes SET aceptado = 1 WHERE id_usuario = ? and id_evento = ? ");
+        ps.setInt(1, a.getId_usuario());
+        ps.setInt(2, a.getId_evento());
+
+        ps.executeUpdate();
+
+        ps.close();
+        con.close();
+
+    }
+    
+    //RECHAZAR AYUDA
+    public void rechazarAyuda(Ayudante a) throws SQLException {
+
+        con = ConnectionDB.conexion();
+
+        ps = con.prepareStatement("UPDATE ayudantes SET aceptado = 0 WHERE id_usuario = ? and id_evento = ? ");
+        ps.setInt(1, a.getId_usuario());
+        ps.setInt(2, a.getId_evento());
+
+        ps.executeUpdate();
+
+        ps.close();
+        con.close();
+
     }
 }
