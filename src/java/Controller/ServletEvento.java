@@ -79,7 +79,7 @@ public class ServletEvento extends HttpServlet {
 
                 //ENVIAMOS LA INFORMACION A LA SIGUIENTE PAGINA
                 request.setAttribute("user", tituloEvento);
-                RequestDispatcher rd = request.getRequestDispatcher("jspok.jsp"); //
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //
                 rd.forward(request, response);
                 break;
 
