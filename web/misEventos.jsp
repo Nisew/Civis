@@ -99,7 +99,7 @@
                                 <% ayudante = ayudantesDB.listInscritos(evento.getId_evento());
                                     for (Ayudante ay : ayudante) {
                                         us = udb.verUsuario(ay.getUsuario());
-                                       %><span style = "color: black"> <% out.println(us.getUsuario());
+                                       %><span style = "color: black"> <% out.println(us.getUsuario().toUpperCase());
                                         %> </span>
                                 <form action="ayudante?sa=aceptar" method="post">
                                     <button type="submit" name="aceptar" value="<%=ay.getId_usuario() %>" class="btn btn-accept">
