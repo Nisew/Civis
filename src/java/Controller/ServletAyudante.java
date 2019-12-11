@@ -104,7 +104,7 @@ public class ServletAyudante extends HttpServlet {
                 break;
             case "aceptar":
                 int usuarioAaceptar = Integer.parseInt(request.getParameter("aceptar"));
-                int eventoAaceptar = 3;
+                int eventoAaceptar = 1;
                 
                 Ayudante ayudAcep = new Ayudante();
                 AyudantesDB acepDB = new AyudantesDB();
@@ -122,7 +122,7 @@ public class ServletAyudante extends HttpServlet {
                 break;
             case "rechazar":
                 int usuarioArechazar = Integer.parseInt(request.getParameter("rechazar"));
-                int eventoArechazar = 3;
+                int eventoArechazar = 1;
                 
                 Ayudante ayudRec = new Ayudante();
                 AyudantesDB recDB = new AyudantesDB();

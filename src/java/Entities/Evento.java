@@ -58,9 +58,9 @@ public class Evento {
         this.id_creador = id_creador;
     }
 
-    public Evento(int id_creador, int id_evento, String titulo, 
-            String descripcion, String ubicacion, String fecha_evento, 
-            String hora_evento, boolean aceptado, boolean confirmado, 
+    public Evento(int id_creador, int id_evento, String titulo,
+            String descripcion, String ubicacion, String fecha_evento,
+            String hora_evento, boolean aceptado, boolean confirmado,
             String fecha_registro, String hora_registro, int num_ayudante) {
         this.id_creador = id_creador;
         this.id_evento = id_evento;
@@ -75,34 +75,40 @@ public class Evento {
         this.hora_registro = hora_registro;
         this.num_ayudante = num_ayudante;
     }
-    
-        public Evento(String usuarioCreador, int id_evento, String titulo, 
-            String descripcion, String ubicacion, String fecha_evento, 
-            String hora_evento, boolean aceptado, boolean confirmado, 
+
+    public Evento(int id_creador, String usuarioCreador, int id_evento, String titulo,
+            String descripcion, String ubicacion, String fecha_evento,
+            String hora_evento, boolean aceptado, boolean confirmado,
             String fecha_registro, String hora_registro, int num_ayudante) {
+        this.id_creador = id_creador;
         this.usuarioCreador = usuarioCreador;
-        this.id_evento=id_evento;
-        this.titulo=titulo;
-        this.descripcion=descripcion;
-        this.ubicacion=ubicacion;
-        this.fecha_evento=fecha_evento;
-        this.hora_evento=hora_evento;
-        this.aceptado=aceptado;
-        this.confirmado=confirmado;
-        this.fecha_registro=fecha_registro;
-        this.hora_registro=hora_registro;
-        this.num_ayudante=num_ayudante;
-        }
+        this.id_evento = id_evento;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.ubicacion = ubicacion;
+        this.fecha_evento = fecha_evento;
+        this.hora_evento = hora_evento;
+        this.aceptado = aceptado;
+        this.confirmado = confirmado;
+        this.fecha_registro = fecha_registro;
+        this.hora_registro = hora_registro;
+        this.num_ayudante = num_ayudante;
+    }
 
-
-
-
-     //Getter y Setter
+    //Getter y Setter
     public int getId_evento() {
         return id_evento;
     }
 
-    public void setId_evento(int id_evento) {
+    public String getUsuarioCreador() {
+        return usuarioCreador;
+    }
+
+    public void setUsuarioCreador(String usuarioCreador) {
+        this.usuarioCreador = usuarioCreador;
+    }
+    
+        public void setId_evento(int id_evento) {
         this.id_evento = id_evento;
     }
 
@@ -196,12 +202,12 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "El evento: "+titulo+", con id: "+id_evento+", "+descripcion+", en "+ubicacion
-                +" el dia: "+fecha_evento+", a las: "+hora_evento+", necesita "+num_ayudante+" ayudante."
-                +"\nEl evento fue creado el dia: "+fecha_registro+ ", a las "+hora_registro
-                +" , por: "+usuarioCreador+ " , id:" +id_creador+ ". El evento se encuentra aceptado: "+aceptado
-                + " y confirmado: "+confirmado+"\n\n";
-    } 
+        return "El evento: " + titulo + ", con id: " + id_evento + ", " + descripcion + ", en " + ubicacion
+                + " el dia: " + fecha_evento + ", a las: " + hora_evento + ", necesita " + num_ayudante + " ayudante."
+                + "\nEl evento fue creado el dia: " + fecha_registro + ", a las " + hora_registro
+                + " , por: " + usuarioCreador + " , id:" + id_creador + ". El evento se encuentra aceptado: " + aceptado
+                + " y confirmado: " + confirmado + "\n\n";
+    }
 
     //Metodos
     public static String horaActual() {
@@ -217,5 +223,5 @@ public class Evento {
         String fechaActual = horaFormato.format(new Date());
         return fechaActual;
     }
-    
+
 }

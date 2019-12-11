@@ -73,7 +73,9 @@
                     <div class="description">
                         <h1><%=evento.getTitulo()%></h1>
                         <br><br>
-                        <h2>SOFIA CACERES MARTINEZ</h2></h2>
+                        <h2><%=
+                            evento.getUsuarioCreador()
+                            %></h2></h2>
                         <br>
                         <p>
                             <%=evento.getDescripcion()%>

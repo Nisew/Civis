@@ -7,12 +7,20 @@ import java.sql.SQLException;
 public class AceptarAyuda {
 
     public static void main(String[] args) {
-        
-        Ayudante ayudante = new Ayudante(1, 1, false, false);
 
-        AyudantesDB ayudanteDB = new AyudantesDB();
+        int usuarioArechazar = 1;
+        int eventoArechazar = 1;
+
+        Ayudante ayudRec = new Ayudante();
+        AyudantesDB recDB = new AyudantesDB();
+
         try {
-            ayudanteDB.aceptarAyuda(ayudante);
+            ayudRec = recDB.verAyudante(usuarioArechazar, eventoArechazar);
+            recDB.rechazarAyuda(ayudRec);
+            
+            System.out.println(ayudRec.getAceptado());
+            
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

@@ -79,6 +79,22 @@ public class AyudantesDB {
 
     }
 
+    //RECHAZAR AYUDA
+    public void rechazarAyuda(Ayudante a) throws SQLException {
+
+        con = ConnectionDB.conexion();
+
+        ps = con.prepareStatement("UPDATE ayudantes SET aceptado = 0 WHERE id_usuario = ? and id_evento = ? ");
+        ps.setInt(1, a.getId_usuario());
+        ps.setInt(2, a.getId_evento());
+
+        ps.executeUpdate();
+
+        ps.close();
+        con.close();
+
+    }
+
     //Listar  nombres de usuarios inscritos a un evento
     public ArrayList<Ayudante> listInscritos(int id_evento) throws SQLException {
         con = ConnectionDB.conexion();
