@@ -12,6 +12,7 @@ import Entities.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -40,9 +41,12 @@ public class ServletAyudante extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String sa = request.getParameter("sa");
+        
 
         switch (sa) {
             case "inscribir":
+                int id_evento_inscribir = Integer.parseInt(request.getParameter("inscribir"));
+                
                 AyudantesDB ay_inscrito = new AyudantesDB();
                 UsuariosDB usToAy = new UsuariosDB();
                 Usuario uaux = new Usuario();
@@ -59,10 +63,15 @@ public class ServletAyudante extends HttpServlet {
                     }
                     uaux = usToAy.verUsuario(nombreAy);
                     ayinscribir.setId_usuario(uaux.getId_usuario());
+                    ayinscribir.setId_evento(id_evento_inscribir);
                     ay_inscrito.inscribirAyudante(ayinscribir);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+                
+                request.setAttribute("ayudante", ayinscribir);
+                RequestDispatcher rd = request.getRequestDispatcher("misInscripciones.jsp");
+                rd.forward(request, response);
                 break;
         }
     }

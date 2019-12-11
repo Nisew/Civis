@@ -34,13 +34,13 @@
                 <div class="photo" style="background-image: url(./img/panoramic-bcn.jpg)"></div>
                 <ul class="details">
 
-                    <br>
+
                     <li class="author"><%out.println(evento.getUbicacion());%></li>
-                    <br>
+
                     <li class="author"><%out.println(evento.getNum_ayudante());%> personas</li>
-                    <br>
+
                     <li class="author"><%out.println(evento.getFecha_evento());%></li>
-                    <br>
+
                     <li class="author"><%out.println(evento.getHora_evento());%></li>
 
                 </ul>
@@ -49,13 +49,15 @@
                 <h1><%out.println(evento.getTitulo());%></h1>
                 <br><br>
                 <h2><%
-                      creador = creadorDB.verUsuarioId(evento.getId_creador());
-                      out.print(creador.getUsuario()); %></h2>
+                    creador = creadorDB.verUsuarioId(evento.getId_creador());
+                    out.print(creador.getUsuario()); %></h2>
                 <br>
                 <p><%out.println(evento.getDescripcion());%></p>
-                <button type="button" class="btn btn-success">
-                    INSCRIBIRME
-                </button>
+                <form action="ayudante?sa=inscribir" method="post">
+                    <button type="submit" class="btn btn-success" name="inscribir" value="<%= evento.getId_evento()%>">
+                        INSCRIBIRME
+                    </button>
+                </form>
 
             </div>
 

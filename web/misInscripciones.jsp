@@ -27,13 +27,13 @@
                         <div class="meta">
                             <div class="photo" style="background-image: url(./img/panoramic-bcn.jpg)"></div>
                             <ul class="details">
-                                <br>
+                                
                                 <li class="author"><c:out value="${Evento.getUbicacion()}"/></li>
-                                <br>
+                                
                                 <li class="author"><c:out value="${Evento.num_ayudante}"/> Persona</li>
-                                <br>
+                                
                                 <li class="author"><c:out value="${Evento.fecha_evento}"/></li>
-                                <br>
+                                
                                 <li class="author"><c:out value="${Evento.hora_evento}"/></li>
                             </ul>
                         </div>

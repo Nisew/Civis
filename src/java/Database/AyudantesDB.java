@@ -46,7 +46,7 @@ public class AyudantesDB {
         con.close();
 
     }
-    
+
     //RECHAZAR AYUDANTE
     public void rechazarAyudante(Ayudante a) throws SQLException {
 
@@ -62,7 +62,7 @@ public class AyudantesDB {
         con.close();
 
     }
-    
+
     //ACEPTAR AYUDA
     public void aceptarAyuda(Ayudante a) throws SQLException {
 
@@ -78,7 +78,7 @@ public class AyudantesDB {
         con.close();
 
     }
-    
+
     //RECHAZAR AYUDA
     public void rechazarAyuda(Ayudante a) throws SQLException {
 
@@ -94,21 +94,21 @@ public class AyudantesDB {
         con.close();
 
     }
-    
+
     //Listar  nombres de usuarios inscritos a un evento
-    public ArrayList<Ayudante> listInscritos(int id_evento) throws SQLException{
+    public ArrayList<Ayudante> listInscritos(int id_evento) throws SQLException {
         con = ConnectionDB.conexion();
-        
+
         ArrayList<Ayudante> listaAyudantes = new ArrayList<>();
-        
+
         ps = con.prepareStatement("SELECT u.usuario, a.id_evento "
                 + "FROM ayudantes a JOIN usuarios u "
                 + "ON a.id_usuario = u.id_usuario "
                 + "WHERE id_evento = ?");
-        ps.setInt(1,id_evento);
-        
+        ps.setInt(1, id_evento);
+
         ResultSet rs = ps.executeQuery();
-        
+
         while (rs.next()) {
             listaAyudantes.add(new Ayudante(
                     rs.getString("usuario"),
@@ -116,8 +116,31 @@ public class AyudantesDB {
         }
         ps.close();
         con.close();
-        return listaAyudantes;       
-        
+        return listaAyudantes;
+
     }
-    
+
+    //Metodo para mostrar perfil de un ayudante
+    public Ayudante verAyudante(int idEvento) throws SQLException {
+        con = ConnectionDB.conexion();
+
+        Ayudante ay = new Ayudante();
+
+        ps = con.prepareStatement("SELECT * FROM usuarios WHERE id_evento = ?");
+        ps.setInt(1, idEvento);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            ay.setId_usuario(rs.getInt("id_usuario"));
+            ay.setId_evento(rs.getInt("id_evento"));
+            ay.setAceptado(rs.getBoolean("aceptado"));
+            ay.setConfirmado(rs.getBoolean("confirmado"));
+        }
+
+        ps.close();
+        con.close();
+
+        return ay;
+    }
 }

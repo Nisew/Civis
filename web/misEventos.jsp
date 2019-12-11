@@ -1,3 +1,7 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="Database.EventosDB"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Entities.Evento"%>
 <%@page import="Database.UsuariosDB"%>
 <%@page import="Entities.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -6,6 +10,25 @@
 <%
     Usuario creador = new Usuario();
     UsuariosDB creadorDB = new UsuariosDB();
+    EventosDB eventosDB = new EventosDB();
+    ArrayList<Evento> eventos = new ArrayList<Evento>();
+
+    String nombreUs = "";
+    try {
+        Cookie cookie[] = request.getCookies();
+
+        for (Cookie c : cookie) {
+            if (c.getName().equals("uName")) {
+                nombreUs = c.getValue();
+            }
+        }
+
+        Usuario userEventosPropios = creadorDB.verUsuario(nombreUs);
+        eventos = eventosDB.listarEventosPropios(userEventosPropios);
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+
 %>
 <!DOCTYPE html>
 <html>
@@ -31,28 +54,26 @@
                 <div class="col-md-2"></div>
 
                 <div class="col-md-8">
+                <% for (Evento evento : eventos) { %>
+                <div class="blog-card">
+                    <div class="meta">
+                        <div class="photo" style="background-image: url(./img/panoramic-bcn.jpg)"></div>
+                        <ul class="details">
+                            <li class="author"><%out.println(evento.getUbicacion());%></li>
+                            <br>
+                            <li class="author"><%out.println(evento.getNum_ayudante());%> Personas</li>
+                            <br>
+                            <li class="author"><%out.println(evento.getFecha_evento());%></li>
+                            <br>
+                            <li class="author"><%out.println(evento.getHora_evento());%></li>
+                        </ul>
+                    </div>
+                    <div class="description">
+                        <h1><%out.println(evento.getTitulo());%></h1>
+                        <br><br>
 
-                <c:forEach var="Evento" items="${listaEventosPropios}"> 
-
-                    <div class="blog-card">
-                        <div class="meta">
-                            <div class="photo" style="background-image: url(./img/panoramic-bcn.jpg)"></div>
-                            <ul class="details">
-                                <li class="author"><c:out value="${Evento.getUbicacion()}"/></li>
-                                <br>
-                                <li class="author"><c:out value="${Evento.num_ayudante}"/> Personas</li>
-                                <br>
-                                <li class="author"><c:out value="${Evento.fecha_evento}"/></li>
-                                <br>
-                                <li class="author"><c:out value="${Evento.hora_evento}"/></li>
-                            </ul>
-                        </div>
-                        <div class="description">
-                            <h1><c:out value="${Evento.titulo}"/></h1>
-                            <br><br>
-                            
-                            <p></p>
-                            <a href="ayudante?sa=listInscritos">
+                        <p></p>
+                        <a href="ayudante?sa=listInscritos">
                             <div class="recuadroNombres">
                                 <i class="fas fa-users">INSCRITOS</i>
                                 <button type="button" class="btn btn-accept">
@@ -65,12 +86,10 @@
                                 </button>
                                 <br>
                             </div>
-                            </a>
-                        </div>
+                        </a>
                     </div>
-                </c:forEach> 
-
-
+                </div>
+                <%}%>
             </div>
 
             <div class="col-md-2"></div>

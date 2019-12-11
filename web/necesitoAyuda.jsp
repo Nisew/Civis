@@ -47,7 +47,7 @@
               </p>
 
               <p class="descripcion">
-                <textarea name="descripcion" class="feedback-input" placeholder="DescripciÃ³n del voluntariado" id="descripcion"></textarea>
+                <textarea name="descripcion" class="feedback-input" placeholder="Descripci&oacute;n del voluntariado" id="descripcion"></textarea>
               </p>
 
 
