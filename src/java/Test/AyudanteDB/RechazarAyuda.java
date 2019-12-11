@@ -12,7 +12,7 @@ public class RechazarAyuda {
 
         AyudantesDB ayudanteDB = new AyudantesDB();
         try {
-            ayudanteDB.rechazarAyuda(ayudante);
+            ayudanteDB.rechazarAyudante(ayudante);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

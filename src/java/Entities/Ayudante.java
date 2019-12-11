@@ -15,6 +15,7 @@ public class Ayudante {
         this.confirmado= false;
     }
     
+    
     public Ayudante(String usuario, int id_evento){
         this.usuario = usuario;
         this.id_evento = id_evento;
@@ -25,6 +26,20 @@ public class Ayudante {
         this.id_evento = id_evento;
         this.aceptado = false;
         this.confirmado = false;
+    }
+    
+    public Ayudante(int id_usuario, String usuario, int id_evento){
+        this.id_usuario = id_usuario;
+        this.usuario = usuario;
+        this.id_evento = id_evento;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public Ayudante(int id_usuario, int id_evento, boolean aceptado, boolean confirmado) {
@@ -67,11 +82,5 @@ public class Ayudante {
         this.aceptado = aceptado;
     }
 
-    @Override
-    public String toString() {
-        return "El ayudante con id usuario: " + id_usuario 
-                + " esta en el id evento: " + id_evento 
-                + ", aceptado: " + aceptado 
-                +  "y confirmado: " + confirmado + "\n";
-    }  
+   
 }

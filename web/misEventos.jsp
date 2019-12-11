@@ -1,3 +1,5 @@
+<%@page import="Database.AyudantesDB"%>
+<%@page import="Entities.Ayudante"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="Database.EventosDB"%>
 <%@page import="java.util.ArrayList"%>
@@ -13,6 +15,21 @@
     EventosDB eventosDB = new EventosDB();
     ArrayList<Evento> eventos = new ArrayList<Evento>();
 
+    AyudantesDB ayudantesDB = new AyudantesDB();
+    ArrayList<Ayudante> ayudante = new ArrayList<Ayudante>();
+    Usuario us = new Usuario();
+    UsuariosDB udb = new UsuariosDB();
+    try {
+        ayudante = ayudantesDB.listInscritos(1);
+        for (Ayudante ay : ayudante) {
+            us = udb.verUsuario(ay.getUsuario());
+            System.out.println(us.getUsuario());
+            System.out.println(ay.getId_usuario());
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+
     String nombreUs = "";
     try {
         Cookie cookie[] = request.getCookies();
@@ -25,6 +42,7 @@
 
         Usuario userEventosPropios = creadorDB.verUsuario(nombreUs);
         eventos = eventosDB.listarEventosPropios(userEventosPropios);
+
     } catch (SQLException ex) {
         ex.printStackTrace();
     }
@@ -73,20 +91,33 @@
                         <br><br>
 
                         <p></p>
-                        <a href="ayudante?sa=listInscritos">
+                       <!-- <a href="ayudante?sa=listInscritos"> -->
                             <div class="recuadroNombres">
                                 <i class="fas fa-users">INSCRITOS</i>
-                                <button type="button" class="btn btn-accept">
-                                    <!-- <i class="fas fa-check"></i> -->
-                                    A
-                                </button>
-                                <button type="button" class="btn btn-discard ">
-                                    <!-- <i class="fas fa-times"></i> -->
-                                    R
-                                </button>
                                 <br>
+                                
+                                <% ayudante = ayudantesDB.listInscritos(evento.getId_evento());
+                                    for (Ayudante ay : ayudante) {
+                                        us = udb.verUsuario(ay.getUsuario());
+                                       %><span style = "color: black"> <% out.println(us.getUsuario());
+                                        %> </span>
+                                <form action="ayudante?sa=aceptar" method="post">
+                                    <button type="submit" name="aceptar" value="<%=ay.getId_usuario() %>" class="btn btn-accept">
+                                        
+                                        <!-- <i class="fas fa-check"></i> -->
+                                        A
+                                    </button>
+                                </form>
+                                <form action="ayudante?sa=rechazar" method="post">
+                                    <button type="submit" name="rechazar" value="<%=ay.getId_usuario() %>" class="btn btn-discard ">
+                                        <!-- <i class="fas fa-times"></i> -->
+                                        R
+                                    </button>
+                                </form>
+                                <br>
+                                <% } %>
                             </div>
-                        </a>
+                    <!--    </a> -->
                     </div>
                 </div>
                 <%}%>

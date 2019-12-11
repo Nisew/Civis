@@ -31,7 +31,7 @@ public class AyudantesDB {
         con.close();
     }
 
-    //CONFIRMAR AYUDNTE
+    //CONFIRMAR AYUDANTE
     public void confirmarAyudante(Ayudante a) throws SQLException {
 
         con = ConnectionDB.conexion();
@@ -79,29 +79,13 @@ public class AyudantesDB {
 
     }
 
-    //RECHAZAR AYUDA
-    public void rechazarAyuda(Ayudante a) throws SQLException {
-
-        con = ConnectionDB.conexion();
-
-        ps = con.prepareStatement("UPDATE ayudantes SET aceptado = 0 WHERE id_usuario = ? and id_evento = ? ");
-        ps.setInt(1, a.getId_usuario());
-        ps.setInt(2, a.getId_evento());
-
-        ps.executeUpdate();
-
-        ps.close();
-        con.close();
-
-    }
-
     //Listar  nombres de usuarios inscritos a un evento
     public ArrayList<Ayudante> listInscritos(int id_evento) throws SQLException {
         con = ConnectionDB.conexion();
 
         ArrayList<Ayudante> listaAyudantes = new ArrayList<>();
 
-        ps = con.prepareStatement("SELECT u.usuario, a.id_evento "
+        ps = con.prepareStatement("SELECT u.id_usuario, u.usuario as usuario, a.id_evento "
                 + "FROM ayudantes a JOIN usuarios u "
                 + "ON a.id_usuario = u.id_usuario "
                 + "WHERE id_evento = ?");
@@ -111,6 +95,7 @@ public class AyudantesDB {
 
         while (rs.next()) {
             listaAyudantes.add(new Ayudante(
+                    rs.getInt("id_usuario"),
                     rs.getString("usuario"),
                     rs.getInt("id_evento")));
         }
@@ -121,13 +106,14 @@ public class AyudantesDB {
     }
 
     //Metodo para mostrar perfil de un ayudante
-    public Ayudante verAyudante(int idEvento) throws SQLException {
+    public Ayudante verAyudante(int idUser, int idEvento) throws SQLException {
         con = ConnectionDB.conexion();
 
         Ayudante ay = new Ayudante();
 
-        ps = con.prepareStatement("SELECT * FROM usuarios WHERE id_evento = ?");
-        ps.setInt(1, idEvento);
+        ps = con.prepareStatement("SELECT * FROM ayudantes WHERE id_usuario = ? AND id_evento = ?");
+        ps.setInt(1, idUser);
+        ps.setInt(2, idEvento);
 
         ResultSet rs = ps.executeQuery();
 

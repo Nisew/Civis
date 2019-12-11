@@ -6,7 +6,11 @@
 package Test.AyudanteDB;
 
 import Database.AyudantesDB;
+import Database.UsuariosDB;
+import Entities.Ayudante;
+import Entities.Usuario;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,8 +21,16 @@ public class ListarInscritos {
     public static void main(String[] args) {
         
         AyudantesDB ayudantesDB = new AyudantesDB();
+        ArrayList<Ayudante> ayudante = new ArrayList<>();
+        Usuario us = new Usuario();
+        UsuariosDB udb = new UsuariosDB();
         try {
-            System.out.println(ayudantesDB.listInscritos(4));
+            ayudante =ayudantesDB.listInscritos(1);
+            for (Ayudante ay : ayudante){
+                us = udb.verUsuario(ay.getUsuario());
+                System.out.println(us.getUsuario());
+                System.out.println(ay.getId_usuario());
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

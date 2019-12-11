@@ -73,6 +73,71 @@ public class ServletAyudante extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("misInscripciones.jsp");
                 rd.forward(request, response);
                 break;
+            case "confirmar":
+                
+                int eventoConfirmado = Integer.parseInt(request.getParameter("confirmar"));
+                
+                AyudantesDB ayDB = new AyudantesDB();
+                Ayudante ayconfirmar = new Ayudante();
+                Usuario uaux2 = new Usuario();
+                UsuariosDB usToAy2 = new UsuariosDB();
+                String nombreAyu = "";
+                try {
+                    Cookie cookie[] = request.getCookies();
+
+                    for (Cookie c : cookie) {
+                        if (c.getName().equals("uName")) {
+                            nombreAyu = c.getValue();
+                        }
+                    }
+                    uaux2 = usToAy2.verUsuario(nombreAyu);
+                    ayconfirmar.setId_usuario(uaux2.getId_usuario());
+                    ayconfirmar.setId_evento(eventoConfirmado);
+                    ayconfirmar = ayDB.verAyudante(uaux2.getId_usuario(), eventoConfirmado);
+                    ayDB.confirmarAyudante(ayconfirmar);
+                } catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+                request.setAttribute("ayudante", ayconfirmar);
+                rd = request.getRequestDispatcher("misInscripciones.jsp");
+                rd.forward(request, response);
+                break;
+            case "aceptar":
+                int usuarioAaceptar = Integer.parseInt("aceptar");
+                int eventoAaceptar = 3;
+                
+                Ayudante ayudAcep = new Ayudante();
+                AyudantesDB acepDB = new AyudantesDB();
+                
+                try{
+                ayudAcep = acepDB.verAyudante(usuarioAaceptar, eventoAaceptar);
+                acepDB.aceptarAyuda(ayudAcep);
+                
+                } catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+                request.setAttribute("aceptar", ayudAcep);
+                rd = request.getRequestDispatcher("misEventos.jsp");
+                rd.forward(request, response);
+                break;
+            case "rechazar":
+                int usuarioArechazar = Integer.parseInt("rechazar");
+                int eventoArechazar = 3;
+                
+                Ayudante ayudRec = new Ayudante();
+                AyudantesDB recDB = new AyudantesDB();
+                
+                try{
+                ayudRec = recDB.verAyudante(usuarioArechazar, eventoArechazar);
+                recDB.rechazarAyudante(ayudRec);
+                
+                } catch(SQLException ex){
+                    ex.printStackTrace();
+                }
+                request.setAttribute("aceptar", ayudRec);
+                rd = request.getRequestDispatcher("misEventos.jsp");
+                rd.forward(request, response);
+                break;
         }
     }
 
