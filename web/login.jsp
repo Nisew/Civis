@@ -13,7 +13,7 @@
   <body>
 
     <!-- Inicio NavBar -->
-    <jsp:include flush="true" page="navbarlogged.jsp"></jsp:include>
+    <jsp:include flush="true" page="navbar.jsp"></jsp:include>
     <!-- Final NavBar -->
 
     <!-- Inicio visualizaciÃ³n eventos -->
@@ -25,7 +25,7 @@
 
         <div id="form-main">
           <div id="form-div">
-            <form class="form" id="formLogin" action="usuario?sa=userLogin" method="post" align:center>
+            <form class="form" id="formLogin" action="ServletLogin" method="post" align:center>
 
               <p class="nombreUsuario">
                 <input name="nombreUsuario" type="text" class="feedback-input" placeholder="Nombre usuario" id="nombreUsuario" />

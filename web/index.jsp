@@ -13,13 +13,31 @@
     </head>
     <body>
         
-        <!-- Inicio NavBar -->
-        <jsp:include flush="true" page="navbarlogged.jsp"></jsp:include>
-        <!-- Final NavBar -->
+       
+<%
 
-        <!-- Inicio visualizaciÃ³n eventos -->
-        <jsp:include flush="true" page="MostrarEventos.jsp"></jsp:include>
-        <!-- Fin visualizaciÃ³n eventos -->
+            String nombrecuki = "";
+            String nombreUsuario="";
+            if (request.getCookies() != null) {
+                Cookie ck[] = request.getCookies();
+               
+                for(int i=0;i<ck.length;i++){
+                    if(ck[i].getName().equals("uName")){
+                        nombreUsuario=ck[i].getValue();
+                        
+                    }
+                }
+                
+            } 
+             %>
+            <% if(!nombreUsuario.equals("")){ %>
+            <jsp:include flush="true" page="navbarlogged.jsp"></jsp:include>   
+                <%}  else{%>
+                
+                <jsp:include flush="true" page="navbar.jsp"></jsp:include>   
+                <%}%>
+            
+            <jsp:include flush="true" page="MostrarEventos.jsp"></jsp:include>
 
     </body>
 </html>

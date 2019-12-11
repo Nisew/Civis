@@ -1,8 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controller;
 
 import Database.UsuariosDB;
-import Entities.Usuario;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,53 +17,43 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ServletUsuario", urlPatterns = {"/usuario"})
-public class ServletUsuario extends HttpServlet {
+/**
+ *
+ * @author Usuario
+ */
+@WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
+public class ServletLogin extends HttpServlet {
 
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         response.setContentType("text/html;charset=UTF-8");
+        
+                String userLogin = request.getParameter("nombreUsuario");
+                String contrasenya = request.getParameter("contrasenya");
 
-        String sa = request.getParameter("sa");
-
-        //int idUsuario = Integer.parseInt(id);
-        switch (sa) {
-            case "newUsuario":
-                //CREAR UN NUEVO USUARIO / REGISTRARTE
-                
-                String usuario = request.getParameter("nombreUsuario");
-                String psswrd = request.getParameter("contrasenya");
-                String nombre = request.getParameter("nombre");
-                String apellidos = request.getParameter("apellidos");
-                String telefono = request.getParameter("telefono");
-                String fecha_nacimiento = request.getParameter("fechaNacimiento");
-                String correo = request.getParameter("correo");
-
-                Usuario u_nuevo = new Usuario(usuario, psswrd, nombre, apellidos, fecha_nacimiento, telefono, correo);
+                UsuariosDB dbLogin = new UsuariosDB();       
+                boolean logueado = false;
 
                 try {
-                    UsuariosDB nuevousuario = new UsuariosDB();
-                    nuevousuario.registroUsuario(u_nuevo);
-                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-                    rd.forward(request, response);
+                    logueado = dbLogin.inicioSesion(userLogin,contrasenya);
                     
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                
-                break;
-                
-            case "borrarCuki":
-                Cookie ck = new Cookie("uName","");
-                ck.setMaxAge(0);
-                response.addCookie(ck);
-                response.sendRedirect("index.jsp");
-                break;
 
-        }
-
-     
+                if (logueado) {
+                    request.setAttribute("user",userLogin);
+                    Cookie ck = new Cookie("uName",userLogin);
+                    response.addCookie(ck);
+                    response.sendRedirect("index.jsp");
+                 
+                } else{
+                    response.sendRedirect("login.jsp");
+                 
+                }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
