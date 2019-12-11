@@ -103,7 +103,7 @@ public class ServletAyudante extends HttpServlet {
                 rd.forward(request, response);
                 break;
             case "aceptar":
-                int usuarioAaceptar = Integer.parseInt("aceptar");
+                int usuarioAaceptar = Integer.parseInt(request.getParameter("aceptar"));
                 int eventoAaceptar = 3;
                 
                 Ayudante ayudAcep = new Ayudante();
@@ -121,7 +121,7 @@ public class ServletAyudante extends HttpServlet {
                 rd.forward(request, response);
                 break;
             case "rechazar":
-                int usuarioArechazar = Integer.parseInt("rechazar");
+                int usuarioArechazar = Integer.parseInt(request.getParameter("rechazar"));
                 int eventoArechazar = 3;
                 
                 Ayudante ayudRec = new Ayudante();
